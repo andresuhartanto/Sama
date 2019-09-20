@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		327799654EBBC5B8A5B1E129 /* Pods_Sama.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E10EF755BC9A1634B29DE1D /* Pods_Sama.framework */; };
+		651261E923338BF8007AF227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651261E823338BF8007AF227 /* AppDelegate.swift */; };
+		651261EB23338BF8007AF227 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651261EA23338BF8007AF227 /* SceneDelegate.swift */; };
+		651261F023338BF8007AF227 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651261EE23338BF8007AF227 /* Main.storyboard */; };
+		651261F223338BFA007AF227 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 651261F123338BFA007AF227 /* Assets.xcassets */; };
+		651261F523338BFA007AF227 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651261F323338BFA007AF227 /* LaunchScreen.storyboard */; };
+		651261FF23338CD6007AF227 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651261FE23338CD6007AF227 /* LoginViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		651261E523338BF8007AF227 /* Sama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sama.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		651261E823338BF8007AF227 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		651261EA23338BF8007AF227 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		651261EF23338BF8007AF227 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		651261F123338BFA007AF227 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		651261F423338BFA007AF227 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		651261F623338BFA007AF227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		651261FE23338CD6007AF227 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		67222DC49B7159819FED7D33 /* Pods-Sama.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sama.debug.xcconfig"; path = "Target Support Files/Pods-Sama/Pods-Sama.debug.xcconfig"; sourceTree = "<group>"; };
+		6E10EF755BC9A1634B29DE1D /* Pods_Sama.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sama.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4D86C7748AB5727A2832C43 /* Pods-Sama.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sama.release.xcconfig"; path = "Target Support Files/Pods-Sama/Pods-Sama.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		651261E223338BF8007AF227 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				327799654EBBC5B8A5B1E129 /* Pods_Sama.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		651261DC23338BF8007AF227 = {
+			isa = PBXGroup;
+			children = (
+				651261E723338BF8007AF227 /* Sama */,
+				651261E623338BF8007AF227 /* Products */,
+				C1EC8918D251271B17CA1081 /* Pods */,
+				AE4AD6232E0855B81CEF1FF1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		651261E623338BF8007AF227 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				651261E523338BF8007AF227 /* Sama.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		651261E723338BF8007AF227 /* Sama */ = {
+			isa = PBXGroup;
+			children = (
+				651261E823338BF8007AF227 /* AppDelegate.swift */,
+				651261EA23338BF8007AF227 /* SceneDelegate.swift */,
+				651261FE23338CD6007AF227 /* LoginViewController.swift */,
+				651261EE23338BF8007AF227 /* Main.storyboard */,
+				651261F123338BFA007AF227 /* Assets.xcassets */,
+				651261F323338BFA007AF227 /* LaunchScreen.storyboard */,
+				651261F623338BFA007AF227 /* Info.plist */,
+			);
+			path = Sama;
+			sourceTree = "<group>";
+		};
+		AE4AD6232E0855B81CEF1FF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E10EF755BC9A1634B29DE1D /* Pods_Sama.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C1EC8918D251271B17CA1081 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				67222DC49B7159819FED7D33 /* Pods-Sama.debug.xcconfig */,
+				F4D86C7748AB5727A2832C43 /* Pods-Sama.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		651261E423338BF8007AF227 /* Sama */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 651261F923338BFA007AF227 /* Build configuration list for PBXNativeTarget "Sama" */;
+			buildPhases = (
+				28E73101016797A956F3154E /* [CP] Check Pods Manifest.lock */,
+				651261E123338BF8007AF227 /* Sources */,
+				651261E223338BF8007AF227 /* Frameworks */,
+				651261E323338BF8007AF227 /* Resources */,
+				508EE228AAAB87AA0F5A39C1 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sama;
+			productName = Sama;
+			productReference = 651261E523338BF8007AF227 /* Sama.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		651261DD23338BF8007AF227 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "Andre Suhartanto";
+				TargetAttributes = {
+					651261E423338BF8007AF227 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = 651261E023338BF8007AF227 /* Build configuration list for PBXProject "Sama" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 651261DC23338BF8007AF227;
+			productRefGroup = 651261E623338BF8007AF227 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				651261E423338BF8007AF227 /* Sama */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		651261E323338BF8007AF227 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				651261F523338BFA007AF227 /* LaunchScreen.storyboard in Resources */,
+				651261F223338BFA007AF227 /* Assets.xcassets in Resources */,
+				651261F023338BF8007AF227 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		28E73101016797A956F3154E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Sama-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		508EE228AAAB87AA0F5A39C1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sama/Pods-Sama-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sama/Pods-Sama-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sama/Pods-Sama-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		651261E123338BF8007AF227 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				651261FF23338CD6007AF227 /* LoginViewController.swift in Sources */,
+				651261E923338BF8007AF227 /* AppDelegate.swift in Sources */,
+				651261EB23338BF8007AF227 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		651261EE23338BF8007AF227 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				651261EF23338BF8007AF227 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		651261F323338BFA007AF227 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				651261F423338BFA007AF227 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		651261F723338BFA007AF227 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		651261F823338BFA007AF227 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		651261FA23338BFA007AF227 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67222DC49B7159819FED7D33 /* Pods-Sama.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3S84D6AKYX;
+				INFOPLIST_FILE = Sama/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andresuhart.Sama;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		651261FB23338BFA007AF227 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4D86C7748AB5727A2832C43 /* Pods-Sama.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3S84D6AKYX;
+				INFOPLIST_FILE = Sama/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andresuhart.Sama;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		651261E023338BF8007AF227 /* Build configuration list for PBXProject "Sama" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				651261F723338BFA007AF227 /* Debug */,
+				651261F823338BFA007AF227 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		651261F923338BFA007AF227 /* Build configuration list for PBXNativeTarget "Sama" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				651261FA23338BFA007AF227 /* Debug */,
+				651261FB23338BFA007AF227 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 651261DD23338BF8007AF227 /* Project object */;
+}
