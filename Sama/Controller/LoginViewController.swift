@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -23,11 +25,21 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginBtnPressed(_ sender: UIButton) {
-    }
-    
-    @IBAction func registerBtnPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "goToRegister", sender: self)
-        print("Register pressed")
+        // Start Progress animation
+        SVProgressHUD.show()
+        
+        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+            if error != nil {
+                print(error!)
+            } else {
+                print("Login Successful")
+                
+                // Stop progress animation and navigate to main screen
+                SVProgressHUD.dismiss()
+                self.performSegue(withIdentifier: "goToMainScreen", sender: self)
+            }
+        }
+        
     }
     
     

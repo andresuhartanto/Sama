@@ -16,6 +16,7 @@
 		651261FF23338CD6007AF227 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651261FE23338CD6007AF227 /* LoginViewController.swift */; };
 		651262042334932F007AF227 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651262032334932F007AF227 /* RegisterViewController.swift */; };
 		6512620723349612007AF227 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6512620623349612007AF227 /* GoogleService-Info.plist */; };
+		65126209233498CA007AF227 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65126208233498CA007AF227 /* MainScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		651261FE23338CD6007AF227 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		651262032334932F007AF227 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		6512620623349612007AF227 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		65126208233498CA007AF227 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		67222DC49B7159819FED7D33 /* Pods-Sama.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sama.debug.xcconfig"; path = "Target Support Files/Pods-Sama/Pods-Sama.debug.xcconfig"; sourceTree = "<group>"; };
 		6E10EF755BC9A1634B29DE1D /* Pods_Sama.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sama.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D86C7748AB5727A2832C43 /* Pods-Sama.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sama.release.xcconfig"; path = "Target Support Files/Pods-Sama/Pods-Sama.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				651261EA23338BF8007AF227 /* SceneDelegate.swift */,
 				651261FE23338CD6007AF227 /* LoginViewController.swift */,
 				651262032334932F007AF227 /* RegisterViewController.swift */,
+				65126208233498CA007AF227 /* MainScreenViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65126209233498CA007AF227 /* MainScreenViewController.swift in Sources */,
 				651261FF23338CD6007AF227 /* LoginViewController.swift in Sources */,
 				651261E923338BF8007AF227 /* AppDelegate.swift in Sources */,
 				651261EB23338BF8007AF227 /* SceneDelegate.swift in Sources */,

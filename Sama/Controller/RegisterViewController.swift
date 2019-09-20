@@ -29,9 +29,11 @@ class RegisterViewController: UIViewController {
         
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             if error != nil {
-                print(error)
+                print(error!)
             } else {
                 print("Registration Completed!")
+                
+                // Stop Progress bar and navigate to Main screen
                 SVProgressHUD.dismiss()
                 
                 self.performSegue(withIdentifier: "goToMainScreen", sender: self)

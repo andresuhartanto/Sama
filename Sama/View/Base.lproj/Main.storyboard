@@ -78,7 +78,6 @@
                                                 <rect key="frame" x="124.5" y="142" width="57" height="30"/>
                                                 <state key="normal" title="Register"/>
                                                 <connections>
-                                                    <action selector="registerBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bqR-7B-9Vu"/>
                                                     <segue destination="Hx1-Ry-zSF" kind="show" identifier="goToRegister" id="xGi-ks-Y6H"/>
                                                 </connections>
                                             </button>
@@ -125,6 +124,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="P6K-In-g6l" id="qyz-3j-oMZ"/>
                         <outlet property="passwordTextField" destination="Ku2-Mg-gjW" id="8fd-MG-Epu"/>
+                        <segue destination="wZn-dE-shX" kind="show" identifier="goToMainScreen" id="HiD-CT-Snv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -243,14 +243,46 @@
                     <connections>
                         <outlet property="emailTextField" destination="wzB-R2-KCz" id="oyy-Ic-7Rr"/>
                         <outlet property="passwordTextField" destination="onM-fm-S9j" id="Jlz-Ai-B2W"/>
+                        <segue destination="wZn-dE-shX" kind="show" identifier="goToMainScreen" id="k6u-8E-8rU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gbo-QC-SiK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="560.86956521739137" y="132.58928571428572"/>
+            <point key="canvasLocation" x="-142" y="821"/>
+        </scene>
+        <!--Main Screen View Controller-->
+        <scene sceneID="7RO-az-2Tb">
+            <objects>
+                <viewController id="wZn-dE-shX" customClass="MainScreenViewController" customModule="Sama" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NEj-Sx-dvJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAIN SCREEN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Het-f7-RvC">
+                                <rect key="frame" x="65" y="394" width="284" height="54"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Het-f7-RvC" firstAttribute="centerY" secondItem="NEj-Sx-dvJ" secondAttribute="centerY" id="9k1-io-vn5"/>
+                            <constraint firstItem="Het-f7-RvC" firstAttribute="centerX" secondItem="NEj-Sx-dvJ" secondAttribute="centerX" id="YEC-In-noN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3BC-vE-Z2G"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WMf-cn-g4d"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A8S-pb-mhd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1152" y="534"/>
         </scene>
     </scenes>
     <resources>
         <image name="Logo" width="667" height="667"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="HiD-CT-Snv"/>
+    </inferredMetricsTieBreakers>
 </document>
