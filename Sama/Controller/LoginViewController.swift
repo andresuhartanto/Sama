@@ -10,6 +10,10 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -18,5 +22,13 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func loginBtnPressed(_ sender: UIButton) {
+    }
+    
+    @IBAction func registerBtnPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToRegister", sender: self)
+        print("Register pressed")
+    }
+    
+    
 }
