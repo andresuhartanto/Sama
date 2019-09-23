@@ -12,21 +12,24 @@ import SVProgressHUD
 
 class LoginViewController: UIViewController {
 
+
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        overrideUserInterfaceStyle = .light
         
-
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        view.addGestureRecognizer(tapGesture)
     }
     
     @IBAction func loginBtnPressed(_ sender: UIButton) {
         // Start Progress animation
-        SVProgressHUD.show()
+//        SVProgressHUD.show()
         
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             if error != nil {
@@ -35,11 +38,30 @@ class LoginViewController: UIViewController {
                 print("Login Successful")
                 
                 // Stop progress animation and navigate to main screen
-                SVProgressHUD.dismiss()
+//                SVProgressHUD.dismiss()
                 self.performSegue(withIdentifier: "goToMainScreen", sender: self)
             }
         }
         
+    }
+    
+    @objc func viewTapped() {
+        emailTextField.endEditing(true)
+        passwordTextField.endEditing(true)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     
