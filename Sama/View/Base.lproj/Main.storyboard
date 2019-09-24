@@ -141,7 +141,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="P6K-In-g6l" id="qyz-3j-oMZ"/>
                         <outlet property="passwordTextField" destination="Ku2-Mg-gjW" id="8fd-MG-Epu"/>
-                        <segue destination="wZn-dE-shX" kind="show" identifier="goToMainScreen" id="uas-D1-qZE"/>
+                        <segue destination="7M4-Ak-rdw" kind="show" identifier="goToMainScreen" id="uas-D1-qZE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -266,7 +266,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="wzB-R2-KCz" id="oyy-Ic-7Rr"/>
                         <outlet property="passwordTextField" destination="onM-fm-S9j" id="Jlz-Ai-B2W"/>
-                        <segue destination="wZn-dE-shX" kind="show" identifier="goToMainScreen" id="dER-ba-Z0g"/>
+                        <segue destination="7M4-Ak-rdw" kind="show" identifier="goToMainScreen" id="dER-ba-Z0g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gbo-QC-SiK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -278,11 +278,11 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="wZn-dE-shX" customClass="MainScreenViewController" customModule="Sama" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NEj-Sx-dvJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2kr-Dx-Wgr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" translatesAutoresizingMaskIntoConstraints="NO" id="0oc-1h-8Td">
@@ -305,14 +305,41 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3BC-vE-Z2G"/>
                     </view>
-                    <navigationItem key="navigationItem" id="WMf-cn-g4d"/>
+                    <navigationItem key="navigationItem" id="WMf-cn-g4d">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="YNe-4Z-liL">
+                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="logoutBtnPressed:" destination="wZn-dE-shX" id="9Xv-Fb-Cdj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="itemTableView" destination="2kr-Dx-Wgr" id="GkJ-Fm-US5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A8S-pb-mhd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1184" y="490"/>
+            <point key="canvasLocation" x="2092.753623188406" y="489.50892857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fsH-Ai-zdc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="7M4-Ak-rdw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="M6I-uT-2OD"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="HWn-ET-hfn">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wZn-dE-shX" kind="relationship" relationship="rootViewController" id="TFK-7g-ZM5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KFs-2C-OtL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1182.608695652174" y="489.50892857142856"/>
         </scene>
     </scenes>
     <resources>

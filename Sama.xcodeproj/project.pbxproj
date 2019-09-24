@@ -97,8 +97,8 @@
 		651262012334900F007AF227 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				651261EE23338BF8007AF227 /* Main.storyboard */,
 				651261F323338BFA007AF227 /* LaunchScreen.storyboard */,
+				651261EE23338BF8007AF227 /* Main.storyboard */,
 				65FA10242338DBE2007EA4C3 /* Custom Cell */,
 				65FA1029233A034B007EA4C3 /* Custom Header */,
 			);

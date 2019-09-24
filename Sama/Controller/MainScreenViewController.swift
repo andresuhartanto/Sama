@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MainScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -27,11 +28,6 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         // Register CustomHeader.xib
         let nib = UINib(nibName: "CustomHeader", bundle: nil)
         itemTableView.register(nib, forHeaderFooterViewReuseIdentifier: "CustomHeader")
-        
-        let statusBarView = UIView(frame: UIApplication.shared.statusBarFrame)
-        let statusBarColor = UIColor(red: 60/255, green: 193/255, blue: 246/255, alpha: 1.0)
-        statusBarView.backgroundColor = statusBarColor
-        view.addSubview(statusBarView)
 
     }
     
@@ -50,10 +46,6 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         return 300
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     // Cell Creation
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customItemCell", for: indexPath) as! CustomItemCell
@@ -68,5 +60,20 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return testData.count
     }
+    
+    @IBAction func logoutBtnPressed(_ sender: UIBarButtonItem) {
+        do {
+            try Auth.auth().signOut()
+        }
+        catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let initial = storyboard.instantiateInitialViewController()
+        UIApplication.shared.keyWindow?.rootViewController = initial
+    }
+    
+    
 
 }

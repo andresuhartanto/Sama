@@ -20,11 +20,21 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         view.addGestureRecognizer(tapGesture)
+    }
+    
+    override func viewDidAppear(_ animated: Bool){
+    super.viewDidAppear(animated)
+        
+    if Auth.auth().currentUser != nil {
+       self.performSegue(withIdentifier: "goToMainScreen", sender: nil)
+    }
+        
     }
     
     @IBAction func loginBtnPressed(_ sender: UIButton) {
