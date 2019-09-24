@@ -141,7 +141,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="P6K-In-g6l" id="qyz-3j-oMZ"/>
                         <outlet property="passwordTextField" destination="Ku2-Mg-gjW" id="8fd-MG-Epu"/>
-                        <segue destination="3VU-7h-9zj" kind="show" identifier="goToMainScreen" id="HiD-CT-Snv"/>
+                        <segue destination="wZn-dE-shX" kind="show" identifier="goToMainScreen" id="uas-D1-qZE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -266,7 +266,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="wzB-R2-KCz" id="oyy-Ic-7Rr"/>
                         <outlet property="passwordTextField" destination="onM-fm-S9j" id="Jlz-Ai-B2W"/>
-                        <segue destination="3VU-7h-9zj" kind="show" identifier="goToMainScreen" id="kHY-lg-ZuR"/>
+                        <segue destination="wZn-dE-shX" kind="show" identifier="goToMainScreen" id="dER-ba-Z0g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gbo-QC-SiK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -278,11 +278,11 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="wZn-dE-shX" customClass="MainScreenViewController" customModule="Sama" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NEj-Sx-dvJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2kr-Dx-Wgr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" translatesAutoresizingMaskIntoConstraints="NO" id="0oc-1h-8Td">
@@ -312,32 +312,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A8S-pb-mhd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2060.8695652173915" y="533.70535714285711"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Rzh-zR-8IV">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="3VU-7h-9zj" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="yiQ-Kr-SW8"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vzZ-QM-jmc">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="wZn-dE-shX" kind="relationship" relationship="rootViewController" id="ujU-0y-ZZW"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w5s-sQ-F0h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1150.7246376811595" y="533.70535714285711"/>
+            <point key="canvasLocation" x="1184" y="490"/>
         </scene>
     </scenes>
     <resources>
         <image name="Logo" width="667" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kHY-lg-ZuR"/>
+        <segue reference="dER-ba-Z0g"/>
     </inferredMetricsTieBreakers>
 </document>
