@@ -209,7 +209,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="onM-fm-S9j">
                                                 <rect key="frame" x="20" y="62" width="266" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="Hx1-Ry-zSF" id="WvC-al-gE3"/>
                                                 </connections>
@@ -406,6 +406,6 @@
         <image name="User" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dER-ba-Z0g"/>
+        <segue reference="uas-D1-qZE"/>
     </inferredMetricsTieBreakers>
 </document>

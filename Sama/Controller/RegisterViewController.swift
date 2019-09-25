@@ -31,39 +31,39 @@ class RegisterViewController: UIViewController {
         // Start showing progress
 //        SVProgressHUD.show()
         
-        print(nameTextField.text!)
-        
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-            if error != nil {
-                print(error!)
-                if let errorCode = AuthErrorCode(rawValue: error!._code) {
-                    var errorMessage = ""
-                    
-                    switch errorCode {
-                        case .invalidEmail:
-                            errorMessage = "Email is invalid"
-                        case .emailAlreadyInUse:
-                            errorMessage = "Email is already in use"
-                        case .weakPassword:
-                            errorMessage = "Password must be 6 characters long or more"
-                        case .missingEmail:
-                            errorMessage = "Please add your valid email address"
-                        default:
-                            print("Create User Error: \(error!)")
+        let name = self.nameTextField.text!
+        if name != "" {
+            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+                if error != nil {
+                    print(error!)
+                    if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                        var errorMessage = ""
+                        
+                        switch errorCode {
+                            case .invalidEmail:
+                                errorMessage = "Email is invalid"
+                            case .emailAlreadyInUse:
+                                errorMessage = "Email is already in use"
+                            case .weakPassword:
+                                errorMessage = "Password must be 6 characters long or more"
+                            case .missingEmail:
+                                errorMessage = "Please add your valid email address"
+                            default:
+                                print("Create User Error: \(error!)")
+                        }
+                        
+                        self.displayAlert(errorMessage)
+                        
                     }
                     
-                    self.displayAlert(errorMessage)
-                    
+                } else {
+                    self.saveUserData(name, self.emailTextField.text!)
+                    self.performSegue(withIdentifier: "goToMainScreen", sender: self)
+                    print("Registration Completed!")
                 }
-                
-            } else {
-                print("Registration Completed!")
-                
-                // Stop Progress bar and navigate to Main screen
-//                SVProgressHUD.dismiss()
-                
-                self.performSegue(withIdentifier: "goToMainScreen", sender: self)
             }
+        } else {
+            self.displayAlert("Name could not be empty")
         }
     }
     
@@ -73,6 +73,25 @@ class RegisterViewController: UIViewController {
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
+        
+    }
+    
+    // Save user data to Firebase
+    func saveUserData(_ name: String, _ email : String) {
+        let userDB = Database.database().reference().child("Users")
+        guard let uid = Auth.auth().currentUser?.uid else {
+            fatalError("Could not get user UID")
+        }
+        print(uid)
+        let userDataDictionary = ["name": "\(name)", "email": "\(email)"]
+        
+        let data = [uid: userDataDictionary]
+        
+        userDB.setValue(data) { (error, ref) in
+            if error != nil {
+                print(error!)
+            }
+        }
         
     }
     
