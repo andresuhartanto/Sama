@@ -14,6 +14,7 @@ class RegisterViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
     
     
     override func viewDidLoad() {
@@ -30,9 +31,31 @@ class RegisterViewController: UIViewController {
         // Start showing progress
 //        SVProgressHUD.show()
         
+        print(nameTextField.text!)
+        
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             if error != nil {
                 print(error!)
+                if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                    var errorMessage = ""
+                    
+                    switch errorCode {
+                        case .invalidEmail:
+                            errorMessage = "Email is invalid"
+                        case .emailAlreadyInUse:
+                            errorMessage = "Email is already in use"
+                        case .weakPassword:
+                            errorMessage = "Password must be 6 characters long or more"
+                        case .missingEmail:
+                            errorMessage = "Please add your valid email address"
+                        default:
+                            print("Create User Error: \(error!)")
+                    }
+                    
+                    self.displayAlert(errorMessage)
+                    
+                }
+                
             } else {
                 print("Registration Completed!")
                 
@@ -44,9 +67,19 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    func displayAlert(_ message : String) {
+        let alert = UIAlertController(title: "Oops something's wrong", message: "\(message)", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
     @objc func viewTapped() {
         emailTextField.endEditing(true)
         passwordTextField.endEditing(true)
+        nameTextField.endEditing(true)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

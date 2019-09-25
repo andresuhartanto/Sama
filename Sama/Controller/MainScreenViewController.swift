@@ -62,16 +62,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func logoutBtnPressed(_ sender: UIBarButtonItem) {
-        do {
-            try Auth.auth().signOut()
-        }
-        catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initial = storyboard.instantiateInitialViewController()
-        UIApplication.shared.keyWindow?.rootViewController = initial
     }
     
     

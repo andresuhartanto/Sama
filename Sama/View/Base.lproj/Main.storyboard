@@ -221,6 +221,11 @@
                                                     <action selector="registerBtnPressed:" destination="Hx1-Ry-zSF" eventType="touchUpInside" id="5st-5K-lxp"/>
                                                 </connections>
                                             </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="svF-Bs-giT">
+                                                <rect key="frame" x="20" y="-22" width="266" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -228,7 +233,10 @@
                                             <constraint firstItem="onM-fm-S9j" firstAttribute="centerX" secondItem="Zv6-ig-x9W" secondAttribute="centerX" id="8wz-ax-NOb"/>
                                             <constraint firstItem="onM-fm-S9j" firstAttribute="leading" secondItem="Zv6-ig-x9W" secondAttribute="leading" constant="20" id="IcC-AI-1tK"/>
                                             <constraint firstItem="wzB-R2-KCz" firstAttribute="leading" secondItem="Zv6-ig-x9W" secondAttribute="leading" constant="20" id="Mul-Y7-ROO"/>
+                                            <constraint firstAttribute="trailing" secondItem="svF-Bs-giT" secondAttribute="trailing" constant="20" id="Myg-7f-Y8h"/>
                                             <constraint firstItem="tc4-BN-Qqi" firstAttribute="top" secondItem="onM-fm-S9j" secondAttribute="bottom" constant="8" id="PLi-rr-MkK"/>
+                                            <constraint firstItem="svF-Bs-giT" firstAttribute="centerX" secondItem="Zv6-ig-x9W" secondAttribute="centerX" id="VBI-Ve-OpP"/>
+                                            <constraint firstItem="svF-Bs-giT" firstAttribute="leading" secondItem="Zv6-ig-x9W" secondAttribute="leading" constant="20" id="ZxF-5r-vde"/>
                                             <constraint firstItem="tc4-BN-Qqi" firstAttribute="centerX" secondItem="Zv6-ig-x9W" secondAttribute="centerX" id="fDh-H1-gd8"/>
                                             <constraint firstAttribute="height" constant="154" id="iCP-9u-c5g"/>
                                             <constraint firstAttribute="trailing" secondItem="onM-fm-S9j" secondAttribute="trailing" constant="20" id="iHo-1r-3s7"/>
@@ -236,6 +244,7 @@
                                             <constraint firstItem="onM-fm-S9j" firstAttribute="top" secondItem="wzB-R2-KCz" secondAttribute="bottom" constant="8" id="pRW-O1-9S2"/>
                                             <constraint firstItem="wzB-R2-KCz" firstAttribute="centerX" secondItem="Zv6-ig-x9W" secondAttribute="centerX" id="smD-iK-mwT"/>
                                             <constraint firstAttribute="trailing" secondItem="wzB-R2-KCz" secondAttribute="trailing" constant="20" id="tcN-GW-P5r"/>
+                                            <constraint firstItem="wzB-R2-KCz" firstAttribute="top" secondItem="svF-Bs-giT" secondAttribute="bottom" constant="8" id="yfi-l2-6Ra"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -265,6 +274,7 @@
                     <navigationItem key="navigationItem" id="NRm-Iv-VB6"/>
                     <connections>
                         <outlet property="emailTextField" destination="wzB-R2-KCz" id="oyy-Ic-7Rr"/>
+                        <outlet property="nameTextField" destination="svF-Bs-giT" id="KdH-cx-gUt"/>
                         <outlet property="passwordTextField" destination="onM-fm-S9j" id="Jlz-Ai-B2W"/>
                         <segue destination="7M4-Ak-rdw" kind="show" identifier="goToMainScreen" id="dER-ba-Z0g"/>
                     </connections>
@@ -327,10 +337,20 @@
         <!--Profile-->
         <scene sceneID="BW1-B8-35L">
             <objects>
-                <viewController id="BXO-L1-ET7" sceneMemberID="viewController">
+                <viewController id="BXO-L1-ET7" customClass="ProfileViewController" customModule="Sama" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kfg-ea-VaA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9H1-Fk-UuF">
+                                <rect key="frame" x="180" y="378" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="logoutBtnPressed:" destination="BXO-L1-ET7" eventType="touchUpInside" id="9Fg-rd-efP"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="kQE-Jf-vb3"/>
                     </view>

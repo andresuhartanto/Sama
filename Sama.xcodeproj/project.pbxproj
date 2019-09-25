@@ -21,6 +21,7 @@
 		65FA10222338DBAF007EA4C3 /* CustomItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FA10202338DBAF007EA4C3 /* CustomItemCell.xib */; };
 		65FA1026233A02E3007EA4C3 /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FA1025233A02E3007EA4C3 /* CustomHeader.swift */; };
 		65FA1028233A0341007EA4C3 /* CustomHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FA1027233A0341007EA4C3 /* CustomHeader.xib */; };
+		65FA102B233B494B007EA4C3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FA102A233B494B007EA4C3 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		65FA10202338DBAF007EA4C3 /* CustomItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomItemCell.xib; sourceTree = "<group>"; };
 		65FA1025233A02E3007EA4C3 /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
 		65FA1027233A0341007EA4C3 /* CustomHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeader.xib; sourceTree = "<group>"; };
+		65FA102A233B494B007EA4C3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		67222DC49B7159819FED7D33 /* Pods-Sama.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sama.debug.xcconfig"; path = "Target Support Files/Pods-Sama/Pods-Sama.debug.xcconfig"; sourceTree = "<group>"; };
 		6E10EF755BC9A1634B29DE1D /* Pods_Sama.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sama.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D86C7748AB5727A2832C43 /* Pods-Sama.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sama.release.xcconfig"; path = "Target Support Files/Pods-Sama/Pods-Sama.release.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				651261FE23338CD6007AF227 /* LoginViewController.swift */,
 				651262032334932F007AF227 /* RegisterViewController.swift */,
 				65126208233498CA007AF227 /* MainScreenViewController.swift */,
+				65FA102A233B494B007EA4C3 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				651261FF23338CD6007AF227 /* LoginViewController.swift in Sources */,
 				651261E923338BF8007AF227 /* AppDelegate.swift in Sources */,
 				651261EB23338BF8007AF227 /* SceneDelegate.swift in Sources */,
+				65FA102B233B494B007EA4C3 /* ProfileViewController.swift in Sources */,
 				651262042334932F007AF227 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

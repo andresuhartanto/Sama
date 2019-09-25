@@ -44,6 +44,25 @@ class LoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             if error != nil {
                 print(error!)
+                if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                    var errorMessage = ""
+                    
+                    switch errorCode {
+                        case .invalidEmail:
+                            errorMessage = "Email is invalid"
+                        case .userNotFound:
+                            errorMessage = "User not found"
+                        case .missingEmail:
+                            errorMessage = "Please add your valid email address"
+                        case .wrongPassword:
+                            errorMessage = "Password is incorrect"
+                        default:
+                            print("Create User Error: \(error!)")
+                    }
+                    
+                    self.displayAlert(errorMessage)
+                    
+                }
             } else {
                 print("Login Successful")
                 
@@ -52,6 +71,15 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "goToMainScreen", sender: self)
             }
         }
+        
+    }
+    
+    func displayAlert(_ message : String) {
+        let alert = UIAlertController(title: "Oops something's wrong", message: "\(message)", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
         
     }
     
