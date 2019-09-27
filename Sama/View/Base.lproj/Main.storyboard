@@ -318,11 +318,60 @@
                     <navigationItem key="navigationItem" id="WMf-cn-g4d"/>
                     <connections>
                         <outlet property="itemTableView" destination="2kr-Dx-Wgr" id="GkJ-Fm-US5"/>
+                        <segue destination="9IJ-0a-gnA" kind="presentation" identifier="goToAddNewPocket" id="FTh-gb-GUp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A8S-pb-mhd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1403" y="1229"/>
+        </scene>
+        <!--Add New Pocket View Controller-->
+        <scene sceneID="ZP2-Bp-5cj">
+            <objects>
+                <viewController id="9IJ-0a-gnA" customClass="AddNewPocketViewController" customModule="Sama" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gx2-d8-xHI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pfE-lK-o3I">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pocketCell" id="yfq-uP-bLf">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yfq-uP-bLf" id="9Ko-1h-afH">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pfE-lK-o3I" firstAttribute="leading" secondItem="5lz-Yz-seb" secondAttribute="leading" id="KWT-2W-2se"/>
+                            <constraint firstItem="pfE-lK-o3I" firstAttribute="trailing" secondItem="5lz-Yz-seb" secondAttribute="trailing" id="PMv-vX-9P0"/>
+                            <constraint firstAttribute="bottom" secondItem="pfE-lK-o3I" secondAttribute="bottom" id="o0p-A9-iYg"/>
+                            <constraint firstItem="pfE-lK-o3I" firstAttribute="top" secondItem="5lz-Yz-seb" secondAttribute="top" id="wUC-cq-yWy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5lz-Yz-seb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ybw-3f-pmy">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="M7g-mn-Kby">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addPocketBtnPressed:" destination="9IJ-0a-gnA" id="ufz-P0-iy0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="pocketTableView" destination="pfE-lK-o3I" id="h1X-mo-ipE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lg2-a3-ex4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1402.8985507246377" y="1919.8660714285713"/>
         </scene>
         <!--Profile-->
         <scene sceneID="BW1-B8-35L">
@@ -382,6 +431,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="GSi-Kx-0nY"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NbK-qV-xrV">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

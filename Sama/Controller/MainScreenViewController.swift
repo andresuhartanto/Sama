@@ -38,6 +38,12 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         print("*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&***&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*")
         print("USER UID:\(Auth.auth().currentUser?.uid ?? "No UID FOUND")")
         
+        let userDB = Database.database().reference().child("Users")
+        
+        userDB.observe(.childAdded) { (snapshot) in
+            let snapshotValue = snapshot.value as! Dictionary<String, String>
+            print(snapshotValue)
+        }
     }
     
     // Create Pocket Button
@@ -52,7 +58,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @objc func pocketBtnPressed() {
-        print("Pocket Button Pressed!")
+        performSegue(withIdentifier: "goToAddNewPocket", sender: self)
     }
     
     // Header Creation
