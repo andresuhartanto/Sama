@@ -17,6 +17,7 @@
 		651262042334932F007AF227 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651262032334932F007AF227 /* RegisterViewController.swift */; };
 		65126209233498CA007AF227 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65126208233498CA007AF227 /* MainScreenViewController.swift */; };
 		6512620B23349F1C007AF227 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6512620A23349F1C007AF227 /* GoogleService-Info.plist */; };
+		656BCAED233E382600E74196 /* PocketButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BCAEC233E382600E74196 /* PocketButton.swift */; };
 		65FA10212338DBAF007EA4C3 /* CustomItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FA101F2338DBAF007EA4C3 /* CustomItemCell.swift */; };
 		65FA10222338DBAF007EA4C3 /* CustomItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FA10202338DBAF007EA4C3 /* CustomItemCell.xib */; };
 		65FA1026233A02E3007EA4C3 /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FA1025233A02E3007EA4C3 /* CustomHeader.swift */; };
@@ -36,6 +37,7 @@
 		651262032334932F007AF227 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		65126208233498CA007AF227 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		6512620A23349F1C007AF227 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		656BCAEC233E382600E74196 /* PocketButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketButton.swift; sourceTree = "<group>"; };
 		65FA101F2338DBAF007EA4C3 /* CustomItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomItemCell.swift; sourceTree = "<group>"; };
 		65FA10202338DBAF007EA4C3 /* CustomItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomItemCell.xib; sourceTree = "<group>"; };
 		65FA1025233A02E3007EA4C3 /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				651261EE23338BF8007AF227 /* Main.storyboard */,
 				65FA10242338DBE2007EA4C3 /* Custom Cell */,
 				65FA1029233A034B007EA4C3 /* Custom Header */,
+				656BCAEE233E382A00E74196 /* Pocket Button */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -126,6 +129,14 @@
 				6512620A23349F1C007AF227 /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		656BCAEE233E382A00E74196 /* Pocket Button */ = {
+			isa = PBXGroup;
+			children = (
+				656BCAEC233E382600E74196 /* PocketButton.swift */,
+			);
+			path = "Pocket Button";
 			sourceTree = "<group>";
 		};
 		65FA10242338DBE2007EA4C3 /* Custom Cell */ = {
@@ -283,6 +294,7 @@
 			files = (
 				65126209233498CA007AF227 /* MainScreenViewController.swift in Sources */,
 				65FA1026233A02E3007EA4C3 /* CustomHeader.swift in Sources */,
+				656BCAED233E382600E74196 /* PocketButton.swift in Sources */,
 				65FA10212338DBAF007EA4C3 /* CustomItemCell.swift in Sources */,
 				651261FF23338CD6007AF227 /* LoginViewController.swift in Sources */,
 				651261E923338BF8007AF227 /* AppDelegate.swift in Sources */,

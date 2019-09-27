@@ -28,7 +28,31 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         // Register CustomHeader.xib
         let nib = UINib(nibName: "CustomHeader", bundle: nil)
         itemTableView.register(nib, forHeaderFooterViewReuseIdentifier: "CustomHeader")
+        
+        getUserData()
+        createPocketBtn()
 
+    }
+    
+    private func getUserData() {
+        print("*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&***&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*")
+        print("USER UID:\(Auth.auth().currentUser?.uid ?? "No UID FOUND")")
+        
+    }
+    
+    // Create Pocket Button
+    private func createPocketBtn() {
+        let button = PocketButton()
+        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 20, bottom: 5, right: 20)
+        button.backgroundColor = UIColor(red: 95/255, green: 147/255, blue: 244/255, alpha: 1)
+        button.layer.cornerRadius = button.frame.size.height / 2
+        button.addTarget(self, action: #selector(pocketBtnPressed), for: .touchUpInside)
+        button.setTitle("Create Pocket \u{2193}", for: .normal)
+        navigationItem.titleView = button
+    }
+    
+    @objc func pocketBtnPressed() {
+        print("Pocket Button Pressed!")
     }
     
     // Header Creation
@@ -61,10 +85,4 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         return testData.count
     }
     
-    @IBAction func logoutBtnPressed(_ sender: UIBarButtonItem) {
-        
-    }
-    
-    
-
 }

@@ -15,22 +15,8 @@ class CustomHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var firstUserNameLabel: UILabel!
     @IBOutlet weak var secondUserNameLabel: UILabel!
-
     
-    
-    @IBAction func logoutBtnPressed(_ sender: UIButton) {
-        do {
-               try Auth.auth().signOut()
-           }
-        catch let signOutError as NSError {
-               print ("Error signing out: %@", signOutError)
-           }
-           
-           let storyboard = UIStoryboard(name: "Main", bundle: nil)
-           let initial = storyboard.instantiateInitialViewController()
-           UIApplication.shared.keyWindow?.rootViewController = initial
-
+    @IBAction func pocketBtnPressed(_ sender: UIButton) {
+        
     }
-    
-
 }
