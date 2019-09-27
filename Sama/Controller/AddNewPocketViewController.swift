@@ -7,28 +7,29 @@
 //
 
 import UIKit
+import Firebase
 
 class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var pocketTableView: UITableView!
     
-//    var pockets : [Pocket] = [Pocket]()
-    var pockets = [
-                    [
-                    "name" : "Home",
-                    "id" : "abcs",
-                    "items" : [
-                    "id" : "itemidddd",
-                    "name" : "Laundry",
-                    "price" : "450",
-                    "owner" : "USER UID"
-                    ],
-                    "contibutors" : [
-                    "id" : "CONTRIBUTOR ID",
-                    "userId" : "CONTIBUTOR USER ID",
-                    "rate" : 50
-                    ]]
-    ]
+    var pockets : [Pocket] = [Pocket]()
+//    var pockets = [
+//                    [
+//                    "name" : "Home",
+//                    "id" : "abcs",
+//                    "items" : [
+//                    "id" : "itemidddd",
+//                    "name" : "Laundry",
+//                    "price" : "450",
+//                    "owner" : "USER UID"
+//                    ],
+//                    "contibutors" : [
+//                    "id" : "CONTRIBUTOR ID",
+//                    "userId" : "CONTIBUTOR USER ID",
+//                    "rate" : 50
+//                    ]]
+//    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,7 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
         pocketTableView.register(UINib(nibName: "CustomPocketCell", bundle: nil), forCellReuseIdentifier: "customPocketCell")
         
         setupNavigationBar()
+        loadPocketsData()
     }
     
     private func setupNavigationBar() {
@@ -49,10 +51,30 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
         navigationController?.navigationBar.tintColor = .white
     }
     
+    private func loadPocketsData() {
+        let pocketsDB = Database.database().reference().child("Pockets")
+        
+        pocketsDB.observe(.childAdded) { (snapshot) in
+            let snapshotValue = snapshot.value as! Dictionary<String, Any>
+            
+            let pocketName = snapshotValue["name"]
+            let pocketContributors = snapshotValue["contributors"] as! Dictionary<String, Any>
+            
+            let pocket = Pocket()
+            pocket.name = pocketName as! String
+            pocket.contributors = pocketContributors
+            
+            self.pockets.append(pocket)
+            self.pocketTableView.reloadData()
+        }
+        
+        
+    }
+    
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customPocketCell", for: indexPath) as! CustomPocketCell
-        cell.pocketTextLabel.text = pockets[indexPath.row]["name"] as? String
+        cell.pocketTextLabel.text = pockets[indexPath.row].name
         
         return cell
     }
@@ -62,6 +84,54 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     @IBAction func addPocketBtnPressed(_ sender: UIBarButtonItem) {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Add New Pocket", message: "", preferredStyle: .alert)
+        
+        let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
+            let newPocketName = textField.text!
+            if newPocketName != "" {
+                let pocketsDB = Database.database().reference().child("Pockets").childByAutoId()
+                guard let uid = Auth.auth().currentUser?.uid else {
+                    fatalError("Could not get user UID")
+                }
+                
+                // Rate is hard coded for now V1.0
+                let rate = 50
+                let data = ["name": "\(newPocketName)", "contributors": [uid : rate]] as [String : Any]
+                
+                print(newPocketName)
+                
+                pocketsDB.setValue(data) { (error, ref) in
+                    if error != nil {
+                        print(error!)
+                    }
+                }
+            } else {
+                self.displayAlert("Please specify pocket name")
+            }
+            
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "New pocket"
+            textField = alertTextField
+        }
+        
+        alert.addAction(addAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func displayAlert(_ message : String) {
+        let alert = UIAlertController(title: "Oops something's wrong", message: "\(message)", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+        
     }
     
 

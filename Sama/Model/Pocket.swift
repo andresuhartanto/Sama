@@ -9,8 +9,8 @@
 import Foundation
 
 class Pocket {
-    var id : String = ""
+//    var id : String = ""
     var name : String = ""
     var items : [Item] = [Item]()
-    var contributors : [Contributor] = [Contributor]()
+    var contributors : Dictionary<String, Any>?
 }

@@ -318,7 +318,7 @@
                     <navigationItem key="navigationItem" id="WMf-cn-g4d"/>
                     <connections>
                         <outlet property="itemTableView" destination="2kr-Dx-Wgr" id="GkJ-Fm-US5"/>
-                        <segue destination="9IJ-0a-gnA" kind="presentation" identifier="goToAddNewPocket" id="FTh-gb-GUp"/>
+                        <segue destination="9IJ-0a-gnA" kind="show" identifier="goToAddNewPocket" id="FTh-gb-GUp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A8S-pb-mhd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -328,13 +328,13 @@
         <!--Add New Pocket View Controller-->
         <scene sceneID="ZP2-Bp-5cj">
             <objects>
-                <viewController id="9IJ-0a-gnA" customClass="AddNewPocketViewController" customModule="Sama" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="9IJ-0a-gnA" customClass="AddNewPocketViewController" customModule="Sama" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gx2-d8-xHI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pfE-lK-o3I">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pocketCell" id="yfq-uP-bLf">
