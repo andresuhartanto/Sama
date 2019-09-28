@@ -35,15 +35,18 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     private func getUserData() {
-        print("*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&***&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*")
-        print("USER UID:\(Auth.auth().currentUser?.uid ?? "No UID FOUND")")
         
         let userDB = Database.database().reference().child("Users")
-        
-        userDB.observe(.childAdded) { (snapshot) in
-            let snapshotValue = snapshot.value as! Dictionary<String, String>
-            print(snapshotValue)
-        }
+//        let pocketView = AddNewPocketViewController()
+//
+//        userDB.observe(.childAdded) { (snapshot) in
+//            let snapshotValue = snapshot.value as! Dictionary<String, Any>
+//            if snapshotValue["pockets"] == nil {
+//                pocketView.hasPocket = false
+//            } else {
+//                pocketView.hasPocket = true
+//            }
+//        }
     }
     
     // Create Pocket Button

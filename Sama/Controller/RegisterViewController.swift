@@ -86,12 +86,7 @@ class RegisterViewController: UIViewController {
         let userDataDictionary = ["name": "\(name)", "email": "\(email)"]
         
         let data = [uid: userDataDictionary]
-        
-        userDB.setValue(data) { (error, ref) in
-            if error != nil {
-                print(error!)
-            }
-        }
+        userDB.updateChildValues(data)
         
     }
     

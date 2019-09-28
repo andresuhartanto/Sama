@@ -14,22 +14,7 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var pocketTableView: UITableView!
     
     var pockets : [Pocket] = [Pocket]()
-//    var pockets = [
-//                    [
-//                    "name" : "Home",
-//                    "id" : "abcs",
-//                    "items" : [
-//                    "id" : "itemidddd",
-//                    "name" : "Laundry",
-//                    "price" : "450",
-//                    "owner" : "USER UID"
-//                    ],
-//                    "contibutors" : [
-//                    "id" : "CONTRIBUTOR ID",
-//                    "userId" : "CONTIBUTOR USER ID",
-//                    "rate" : 50
-//                    ]]
-//    ]
+    var userUID : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +26,8 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
         pocketTableView.register(UINib(nibName: "CustomPocketCell", bundle: nil), forCellReuseIdentifier: "customPocketCell")
         
         setupNavigationBar()
+        
+        getUserUID()
         loadPocketsData()
     }
     
@@ -49,6 +36,14 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.tintColor = .white
+    }
+    
+    private func getUserUID() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            fatalError("Could not get user UID")
+        }
+        
+        userUID = uid
     }
     
     private func loadPocketsData() {
@@ -67,8 +62,6 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
             self.pockets.append(pocket)
             self.pocketTableView.reloadData()
         }
-        
-        
     }
     
 
@@ -91,19 +84,22 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
             let newPocketName = textField.text!
             if newPocketName != "" {
                 let pocketsDB = Database.database().reference().child("Pockets").childByAutoId()
-                guard let uid = Auth.auth().currentUser?.uid else {
-                    fatalError("Could not get user UID")
-                }
                 
                 // Rate is hard coded for now V1.0
                 let rate = 50
-                let data = ["name": "\(newPocketName)", "contributors": [uid : rate]] as [String : Any]
+                let data = ["name": "\(newPocketName)", "contributors": [self.userUID : rate]] as [String : Any]
                 
                 print(newPocketName)
-                
                 pocketsDB.setValue(data) { (error, ref) in
                     if error != nil {
                         print(error!)
+                    }
+                    
+                    // Update Users Data in Firebase with new Pocket
+                    if let uid = Auth.auth().currentUser?.uid {
+                        let userDB = Database.database().reference().child("Users").child(uid).child("pockets")
+                        let pocketData = [pocketsDB.key : true]
+                        userDB.updateChildValues(pocketData)
                     }
                 }
             } else {
