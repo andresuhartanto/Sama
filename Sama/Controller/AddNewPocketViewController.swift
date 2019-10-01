@@ -21,13 +21,15 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
         
         pocketTableView.delegate = self
         pocketTableView.dataSource = self
+        
+        // remove line seperator
+        pocketTableView.separatorStyle = .none
 
         // Register CustomPocketCell.xib
         pocketTableView.register(UINib(nibName: "CustomPocketCell", bundle: nil), forCellReuseIdentifier: "customPocketCell")
         
         setupNavigationBar()
         
-        getUserUID()
         loadPocketsData()
     }
     
@@ -38,29 +40,24 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
         navigationController?.navigationBar.tintColor = .white
     }
     
-    private func getUserUID() {
-        guard let uid = Auth.auth().currentUser?.uid else {
-            fatalError("Could not get user UID")
-        }
-        
-        userUID = uid
-    }
-    
     private func loadPocketsData() {
-        let pocketsDB = Database.database().reference().child("Pockets")
-        
-        pocketsDB.observe(.childAdded) { (snapshot) in
-            let snapshotValue = snapshot.value as! Dictionary<String, Any>
+        let userPocketsRef = Database.database().reference().child("Users").child(userUID).child("pockets")
+        userPocketsRef.observe(.childAdded) { (userPocketSnapshot) in
             
-            let pocketName = snapshotValue["name"]
-            let pocketContributors = snapshotValue["contributors"] as! Dictionary<String, Any>
-            
-            let pocket = Pocket()
-            pocket.name = pocketName as! String
-            pocket.contributors = pocketContributors
-            
-            self.pockets.append(pocket)
-            self.pocketTableView.reloadData()
+            let pocketsRef = Database.database().reference().child("Pockets").child(userPocketSnapshot.key)
+            pocketsRef.observeSingleEvent(of: .value) { (pocketSnapshot) in
+                let snapshotValue = pocketSnapshot.value as! Dictionary<String, Any>
+
+                let pocketName = snapshotValue["name"]
+                let pocketContributors = snapshotValue["contributors"] as! Dictionary<String, Any>
+
+                let pocket = Pocket()
+                pocket.name = pocketName as! String
+                pocket.contributors = pocketContributors
+
+                self.pockets.append(pocket)
+                self.pocketTableView.reloadData()
+            }
         }
     }
     

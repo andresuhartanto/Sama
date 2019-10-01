@@ -14,6 +14,8 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     var testData = ["Water Bill", "Netflix", "Groceries", "Internet", "Maintenace", "Cleaning Lady", "Cat food"]
     
     @IBOutlet weak var itemTableView: UITableView!
+    var userUID: String = ""
+    var pocketName: String = "Create Pocket \u{2193}"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,9 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         itemTableView.delegate = self
         itemTableView.dataSource = self
         
+        // Get userUID
+        getUserUID()
+        
         // Register CustomItemCell.xib
         itemTableView.register(UINib(nibName: "CustomItemCell", bundle: nil), forCellReuseIdentifier: "customItemCell")
         
@@ -29,24 +34,16 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         let nib = UINib(nibName: "CustomHeader", bundle: nil)
         itemTableView.register(nib, forHeaderFooterViewReuseIdentifier: "CustomHeader")
         
-        getUserData()
         createPocketBtn()
 
     }
     
-    private func getUserData() {
+    private func getUserUID() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            fatalError("Could not get user UID")
+        }
         
-        let userDB = Database.database().reference().child("Users")
-//        let pocketView = AddNewPocketViewController()
-//
-//        userDB.observe(.childAdded) { (snapshot) in
-//            let snapshotValue = snapshot.value as! Dictionary<String, Any>
-//            if snapshotValue["pockets"] == nil {
-//                pocketView.hasPocket = false
-//            } else {
-//                pocketView.hasPocket = true
-//            }
-//        }
+        userUID = uid
     }
     
     // Create Pocket Button
@@ -56,12 +53,19 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         button.backgroundColor = UIColor(red: 95/255, green: 147/255, blue: 244/255, alpha: 1)
         button.layer.cornerRadius = button.frame.size.height / 2
         button.addTarget(self, action: #selector(pocketBtnPressed), for: .touchUpInside)
-        button.setTitle("Create Pocket \u{2193}", for: .normal)
+        button.setTitle(pocketName, for: .normal)
         navigationItem.titleView = button
     }
     
     @objc func pocketBtnPressed() {
         performSegue(withIdentifier: "goToAddNewPocket", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToAddNewPocket" {
+            let destinationVC = segue.destination as! AddNewPocketViewController
+            destinationVC.userUID = userUID
+        }
     }
     
     // Header Creation
