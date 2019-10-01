@@ -10,6 +10,7 @@ target 'Sama' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'
 	pod 'SVProgressHUD'
+  pod 'SwipeCellKit'
 	#pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 
 end
