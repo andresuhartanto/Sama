@@ -286,7 +286,7 @@
         <!--Main Screen View Controller-->
         <scene sceneID="7RO-az-2Tb">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="wZn-dE-shX" customClass="MainScreenViewController" customModule="Sama" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainScreen" modalPresentationStyle="fullScreen" id="wZn-dE-shX" customClass="MainScreenViewController" customModule="Sama" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NEj-Sx-dvJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

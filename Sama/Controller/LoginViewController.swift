@@ -29,12 +29,11 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool){
-    super.viewDidAppear(animated)
-        
-    if Auth.auth().currentUser != nil {
-       self.performSegue(withIdentifier: "goToMainScreen", sender: nil)
-    }
-        
+        super.viewDidAppear(animated)
+            
+        if Auth.auth().currentUser != nil {
+           self.performSegue(withIdentifier: "goToMainScreen", sender: nil)
+        }
     }
     
     @IBAction func loginBtnPressed(_ sender: UIButton) {
