@@ -91,6 +91,8 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         cell.priceTextLabel.text = "$42"
         cell.profileImageView.image = UIImage(named: "username_icon")
         
+        cell.selectionStyle = .none
+        
         return cell
     }
     

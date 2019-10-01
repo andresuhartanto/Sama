@@ -9,7 +9,7 @@
 import Foundation
 
 class Pocket {
-//    var id : String = ""
+    var pocketID : String = ""
     var name : String = ""
     var items : [Item] = [Item]()
     var contributors : Dictionary<String, Any>?

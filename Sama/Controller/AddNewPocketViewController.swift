@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwipeCellKit
 
 class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -48,10 +49,12 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
             pocketsRef.observeSingleEvent(of: .value) { (pocketSnapshot) in
                 let snapshotValue = pocketSnapshot.value as! Dictionary<String, Any>
 
+                let pocketID = pocketSnapshot.key
                 let pocketName = snapshotValue["name"]
                 let pocketContributors = snapshotValue["contributors"] as! Dictionary<String, Any>
 
                 let pocket = Pocket()
+                pocket.pocketID = pocketID
                 pocket.name = pocketName as! String
                 pocket.contributors = pocketContributors
 
@@ -61,10 +64,29 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
+    private func deletePocket(_ indexPath : IndexPath) {
+        let pocketID = self.pockets[indexPath.row].pocketID
+        let ref = Database.database().reference()
+        // Removing from Pockets DB
+        ref.child("Pockets").child(pocketID).removeValue()
+        // Removing pocket ref from user
+        ref.child("Users").child(self.userUID).child("pockets").child(pocketID).removeValue()
+        // removing from Array
+        self.pockets.remove(at: indexPath.row)
+        
+        self.pocketTableView.reloadData()
+    }
+    
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customPocketCell", for: indexPath) as! CustomPocketCell
+        
+        // SwipeCellKit Delegate
+        cell.delegate = self
+        
         cell.pocketTextLabel.text = pockets[indexPath.row].name
+        
+        cell.selectionStyle = .none
         
         return cell
     }
@@ -86,7 +108,6 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
                 let rate = 50
                 let data = ["name": "\(newPocketName)", "contributors": [self.userUID : rate]] as [String : Any]
                 
-                print(newPocketName)
                 pocketsDB.setValue(data) { (error, ref) in
                     if error != nil {
                         print(error!)
@@ -126,6 +147,32 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
         present(alert, animated: true, completion: nil)
         
     }
-    
+}
 
+// MARK - SwipeCellKit Delegate
+
+extension AddNewPocketViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            let alert = UIAlertController(title: "Delete Pocket", message: "Are you sure you want to delete this pocket?", preferredStyle: .alert)
+            let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action) in
+                self.deletePocket(indexPath)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete-icon")
+
+        return [deleteAction]
+    }
 }

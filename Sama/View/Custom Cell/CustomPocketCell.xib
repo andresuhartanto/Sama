@@ -48,6 +48,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="pocket-icon" width="128" height="128"/>
+        <image name="pocket-icon" width="64" height="64"/>
     </resources>
 </document>

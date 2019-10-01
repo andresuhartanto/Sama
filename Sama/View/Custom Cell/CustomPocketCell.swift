@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class CustomPocketCell: UITableViewCell {
+class CustomPocketCell: SwipeTableViewCell {
     
     @IBOutlet var pocketImageView: UIImageView!
     @IBOutlet var pocketTextLabel: UILabel!
