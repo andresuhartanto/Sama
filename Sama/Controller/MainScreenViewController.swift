@@ -35,7 +35,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         itemTableView.register(nib, forHeaderFooterViewReuseIdentifier: "CustomHeader")
         
         createPocketBtn()
-
+        
     }
     
     private func getUserUID() {
@@ -98,6 +98,11 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return testData.count
+    }
+    
+    // Add button funtions
+    
+    @IBAction func addItemBtnPressed(_ sender: UIBarButtonItem) {
     }
     
 }

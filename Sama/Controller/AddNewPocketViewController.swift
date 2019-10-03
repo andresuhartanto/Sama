@@ -95,6 +95,26 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
         return pockets.count
     }
     
+    // Updating active pocket data once cell/pocket is selected
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(pockets[indexPath.row].name)
+        updateActivePocket(pockets[indexPath.row].pocketID)
+    }
+    
+    private func updateActivePocket(_ pocketID : String) {
+        let userDB = Database.database().reference().child("Users").child(userUID).child("activePocket")
+        let activePocketData = [pocketID: true]
+        
+        userDB.updateChildValues(activePocketData) { (error, ref) in
+            if error != nil {
+                fatalError("Could not set activePocket data")
+            } else {
+                print("Active Pocket is set! Go back to main screen now!")
+            }
+        }
+    }
+    
     @IBAction func addPocketBtnPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add New Pocket", message: "", preferredStyle: .alert)
