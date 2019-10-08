@@ -44,6 +44,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     
     private func loadItems() {
         
+//        let itemDB = Database.database().reference()
     }
     
     // Get Active Pocket
@@ -55,6 +56,8 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
             
             self.activePocket = pocket
             self.createPocketBtn()
+            
+            self.itemTableView.reloadData()
         }
     }
     
@@ -99,8 +102,8 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customItemCell", for: indexPath) as! CustomItemCell
         
-        cell.itemNameTextLabel.text = testData[indexPath.row]
-        cell.priceTextLabel.text = "$42"
+        cell.itemNameTextLabel.text = activePocket.items[indexPath.row].name
+        cell.priceTextLabel.text = activePocket.items[indexPath.row].price
         cell.profileImageView.image = UIImage(named: "username_icon")
         
         cell.selectionStyle = .none
@@ -109,7 +112,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testData.count
+        return activePocket.items.count
     }
     
     // Add button funtions
@@ -155,6 +158,12 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
                         let pocketDB = Database.database().reference().child("Pockets").child(self.activePocket.pocketID).child("items")
                         let itemData = [itemsDB.key : true]
                         pocketDB.updateChildValues(itemData)
+                        
+                        // Update activePocket var and reload tableview
+                        getActivePocket { (pocket) in
+                            self.activePocket = pocket
+                            self.itemTableView.reloadData()
+                        }
                     }
                 } else {
                     self.displayAlert("\(newItemPrice) is not a valid price")

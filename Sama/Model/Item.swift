@@ -12,5 +12,5 @@ class Item {
     var id : String = ""
     var name : String = ""
     var price : String = ""
-    var owner : User = User()
+    var owner : String = ""
 }
