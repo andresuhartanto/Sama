@@ -15,6 +15,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var itemTableView: UITableView!
     var userUID: String = ""
+    var activePocket : Pocket = Pocket()
     var pocketName: String = "Create Pocket \u{2193}"
     
     override func viewDidLoad() {
@@ -25,7 +26,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         itemTableView.dataSource = self
         
         // Get userUID
-        getUserUID()
+        userUID = getuserID()
         
         // Register CustomItemCell.xib
         itemTableView.register(UINib(nibName: "CustomItemCell", bundle: nil), forCellReuseIdentifier: "customItemCell")
@@ -34,16 +35,21 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         let nib = UINib(nibName: "CustomHeader", bundle: nil)
         itemTableView.register(nib, forHeaderFooterViewReuseIdentifier: "CustomHeader")
         
-        createPocketBtn()
+        loadActivePocket()
+//        createPocketBtn()
         
     }
     
-    private func getUserUID() {
-        guard let uid = Auth.auth().currentUser?.uid else {
-            fatalError("Could not get user UID")
+    // Get Active Pocket
+    private func loadActivePocket() {
+        getActivePocket { (pocket) in
+            if pocket.name != "" {
+                self.pocketName = pocket.name
+            }
+            
+            self.activePocket = pocket
+            self.createPocketBtn()
         }
-        
-        userUID = uid
     }
     
     // Create Pocket Button

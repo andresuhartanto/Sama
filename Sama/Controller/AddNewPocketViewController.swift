@@ -106,7 +106,7 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
         let userDB = Database.database().reference().child("Users").child(userUID).child("activePocket")
         let activePocketData = [pocketID: true]
         
-        userDB.updateChildValues(activePocketData) { (error, ref) in
+        userDB.setValue(activePocketData) { (error, ref) in
             if error != nil {
                 fatalError("Could not set activePocket data")
             } else {
