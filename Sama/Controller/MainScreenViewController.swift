@@ -16,7 +16,9 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var itemTableView: UITableView!
     var userUID: String = ""
     var activePocket : Pocket = Pocket()
+    var items : [Item] = [Item]()
     var pocketName: String = "Create Pocket \u{2193}"
+    var indicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +38,11 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         itemTableView.register(nib, forHeaderFooterViewReuseIdentifier: "CustomHeader")
         
         loadActivePocket()
-//        createPocketBtn()
+        loadItems()
+        
+    }
+    
+    private func loadItems() {
         
     }
     
@@ -109,6 +115,63 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     // Add button funtions
     
     @IBAction func addItemBtnPressed(_ sender: UIBarButtonItem) {
+        addItem()
+    }
+    
+    private func addItem() {
+        var nameTextField = UITextField()
+        var priceTextField = UITextField()
+        let alert = UIAlertController(title: "Add New Item", message: "", preferredStyle: .alert)
+        
+        let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
+            let newItemName = nameTextField.text!
+            let newItemPrice = priceTextField.text!
+            if newItemName != "" && newItemName != "" {
+                let itemsDB = Database.database().reference().child("Items").childByAutoId()
+                
+                let data = ["name": "\(newItemName)", "price" : "\(newItemPrice)", "owner": [self.userUID : true]] as [String : Any]
+                
+                itemsDB.setValue(data) { (error, ref) in
+                    if error != nil {
+                        print(error!)
+                    }
+                    
+                    // Update pocket Data in Firebase with new item
+                    let pocketDB = Database.database().reference().child("Pockets").child(self.activePocket.pocketID).child("items")
+                    let itemData = [itemsDB.key : true]
+                    pocketDB.updateChildValues(itemData)
+                }
+            } else {
+                self.displayAlert("Please specify a value")
+            }
+            
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "New Item"
+            nameTextField = alertTextField
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Price"
+            priceTextField = alertTextField
+        }
+        
+        alert.addAction(addAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func displayAlert(_ message : String) {
+        let alert = UIAlertController(title: "Oops something's wrong", message: "\(message)", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+        
     }
     
 }

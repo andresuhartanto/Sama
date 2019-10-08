@@ -110,7 +110,7 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
             if error != nil {
                 fatalError("Could not set activePocket data")
             } else {
-                print("Active Pocket is set! Go back to main screen now!")
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
