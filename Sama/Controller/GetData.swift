@@ -23,14 +23,15 @@ func getActivePocket(completion: @escaping (Pocket) -> Void) {
             let pocketName = snapshotValue["name"]
             let pocketContributors = snapshotValue["contributors"] as! Dictionary<String, Any>
             
-            let items = snapshotValue["items"] as! Dictionary<String, Bool>
-            loadData(items, ref) { (itemArray) in
-                pocket.pocketID = pocketID
-                pocket.name = pocketName as! String
-                pocket.contributors = pocketContributors
-                pocket.items = itemArray
-                
-                completion(pocket)
+            if let items = snapshotValue["items"] as? [String : Bool] {
+                loadData(items, ref) { (itemArray) in
+                    pocket.pocketID = pocketID
+                    pocket.name = pocketName as! String
+                    pocket.contributors = pocketContributors
+                    pocket.items = itemArray
+                    
+                    completion(pocket)
+                }
             }
         }
     }
