@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class MainScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
     var testData = ["Water Bill", "Netflix", "Groceries", "Internet", "Maintenace", "Cleaning Lady", "Cat food"]
     
@@ -118,9 +118,18 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         addItem()
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.rangeOfCharacter(from: NSCharacterSet.decimalDigits) != nil {
+          return true
+       } else {
+          return false
+       }
+    }
+    
     private func addItem() {
         var nameTextField = UITextField()
         var priceTextField = UITextField()
+        
         let alert = UIAlertController(title: "Add New Item", message: "", preferredStyle: .alert)
         
         let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
@@ -129,18 +138,29 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
             if newItemName != "" && newItemName != "" {
                 let itemsDB = Database.database().reference().child("Items").childByAutoId()
                 
-                let data = ["name": "\(newItemName)", "price" : "\(newItemPrice)", "owner": [self.userUID : true]] as [String : Any]
-                
-                itemsDB.setValue(data) { (error, ref) in
-                    if error != nil {
-                        print(error!)
+                // Safety check for the price
+                if self.isValidPrice(newItemPrice) {
+                    guard let price = Float(newItemPrice) else {
+                        fatalError("Could not convert price to Float")
                     }
                     
-                    // Update pocket Data in Firebase with new item
-                    let pocketDB = Database.database().reference().child("Pockets").child(self.activePocket.pocketID).child("items")
-                    let itemData = [itemsDB.key : true]
-                    pocketDB.updateChildValues(itemData)
+                    let data = ["name": "\(newItemName)", "price" : String(format: "%.2f", price), "owner": [self.userUID : true]] as [String : Any]
+                    
+                    itemsDB.setValue(data) { (error, ref) in
+                        if error != nil {
+                            print(error!)
+                        }
+                        
+                        // Update pocket Data in Firebase with new item
+                        let pocketDB = Database.database().reference().child("Pockets").child(self.activePocket.pocketID).child("items")
+                        let itemData = [itemsDB.key : true]
+                        pocketDB.updateChildValues(itemData)
+                    }
+                } else {
+                    self.displayAlert("\(newItemPrice) is not a valid price")
                 }
+                
+                
             } else {
                 self.displayAlert("Please specify a value")
             }
@@ -156,6 +176,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Price"
+            alertTextField.keyboardType = .decimalPad
             priceTextField = alertTextField
         }
         
@@ -163,6 +184,24 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func isValidPrice(_ priceStr : String) -> Bool {
+        if priceStr == "." {
+            return false
+        }
+        
+        switch priceStr.filter({ $0 == "." }).count {
+        // if there is no dot (.)
+        case 0:
+            return true
+        // if there is one dot (.)
+        case 1:
+            return true
+        // if there are more than one dot (.)
+        default:
+            return false
+        }
     }
     
     private func displayAlert(_ message : String) {
