@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwipeCellKit
 
 class MainScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
@@ -101,6 +102,8 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     // Cell Creation
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customItemCell", for: indexPath) as! CustomItemCell
+        
+        cell.delegate = self
         
         cell.itemNameTextLabel.text = activePocket.items[indexPath.row].name
         cell.priceTextLabel.text = activePocket.items[indexPath.row].price
@@ -222,4 +225,36 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+    private func deletePocket(_ indexPath : IndexPath) {
+    }
+    
+}
+
+// MARK - SwipeCellKit Delegate
+
+extension MainScreenViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            let alert = UIAlertController(title: "Delete Item", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
+            let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action) in
+//                self.deleteItem(indexPath)
+                print("Deleting item")
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete-icon")
+
+        return [deleteAction]
+    }
 }
