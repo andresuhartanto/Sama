@@ -162,11 +162,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
                         let itemData = [itemsDB.key : true]
                         pocketDB.updateChildValues(itemData)
                         
-                        // Update activePocket var and reload tableview
-                        getActivePocket { (pocket) in
-                            self.activePocket = pocket
-                            self.itemTableView.reloadData()
-                        }
+                        self.itemTableView.reloadData()
                     }
                 } else {
                     self.displayAlert("\(newItemPrice) is not a valid price")
@@ -225,7 +221,17 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
-    private func deletePocket(_ indexPath : IndexPath) {
+    private func deleteItem(_ indexPath : IndexPath) {
+        let itemID = self.activePocket.items[indexPath.row].id
+        let ref = Database.database().reference()
+        // Removing from Items DB
+        ref.child("Items").child(itemID).removeValue()
+        // Removing item ref from pocket
+        ref.child("Pockets").child(self.activePocket.pocketID).child("items").child(itemID).removeValue()
+        // removing from Array
+        self.activePocket.items.remove(at: indexPath.row)
+        
+        self.itemTableView.reloadData()
     }
     
 }
@@ -239,8 +245,7 @@ extension MainScreenViewController: SwipeTableViewCellDelegate {
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             let alert = UIAlertController(title: "Delete Item", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
             let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action) in
-//                self.deleteItem(indexPath)
-                print("Deleting item")
+                self.deleteItem(indexPath)
             }
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

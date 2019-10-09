@@ -15,7 +15,7 @@ func getActivePocket(completion: @escaping (Pocket) -> Void) {
     let ref = Database.database().reference()
     ref.child("Users").child(userUID).child("activePocket").observe(.childAdded) { (snapshot) in
         let pocketRef = ref.child("Pockets").child(snapshot.key)
-        pocketRef.observeSingleEvent(of: .value) { (pocketSnapshot) in
+        pocketRef.observe(.value) { (pocketSnapshot) in
             let snapshotValue = pocketSnapshot.value as! Dictionary<String, Any>
             
             let pocket = Pocket()
@@ -47,7 +47,7 @@ func loadData(_ items : [String : Bool], _ ref : DatabaseReference, completion: 
         let itemRef = ref.child("Items").child(item.key)
         let itemObject = Item()
         
-        itemRef.observe(.value) { (snapshot) in
+        itemRef.observeSingleEvent(of: .value) { (snapshot) in
             let snapshotValue = snapshot.value as! Dictionary<String, Any>
             let ownerID = snapshotValue["owner"] as! Dictionary<String, Bool>
             
