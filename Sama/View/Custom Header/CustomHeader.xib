@@ -43,19 +43,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="XsA-vZ-xdd" firstAttribute="centerX" secondItem="8Pd-BP-ang" secondAttribute="centerX" id="Trx-I2-SfP"/>
-                                        <constraint firstItem="d1f-jS-FG8" firstAttribute="centerX" secondItem="8Pd-BP-ang" secondAttribute="centerX" id="aFO-Vt-BjF"/>
-                                        <constraint firstItem="4Bi-eh-fuu" firstAttribute="centerX" secondItem="8Pd-BP-ang" secondAttribute="centerX" id="nHX-hg-qsA"/>
-                                    </constraints>
                                 </stackView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" red="0.41568627450980389" green="0.84705882352941175" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstItem="8Pd-BP-ang" firstAttribute="centerY" secondItem="W6N-fS-ZrD" secondAttribute="centerY" id="NyQ-Ji-MwU"/>
-                                <constraint firstItem="8Pd-BP-ang" firstAttribute="centerX" secondItem="W6N-fS-ZrD" secondAttribute="centerX" id="Pv8-uZ-MKt"/>
+                                <constraint firstItem="8Pd-BP-ang" firstAttribute="centerY" secondItem="W6N-fS-ZrD" secondAttribute="centerY" id="qxM-rI-Wy6"/>
                                 <constraint firstAttribute="height" constant="200" id="rFF-H9-be8"/>
+                                <constraint firstItem="8Pd-BP-ang" firstAttribute="centerX" secondItem="W6N-fS-ZrD" secondAttribute="centerX" id="uxP-ub-EQB"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eje-dm-2hR" userLabel="BottomView">

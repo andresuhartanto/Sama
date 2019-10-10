@@ -17,6 +17,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     var activePocket : Pocket = Pocket()
     var items : [Item] = [Item]()
     var pocketName: String = "Create Pocket \u{2193}"
+    var totalAmount : Float = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,14 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     private func calculateTotal() {
+        var total : Float = 0
+        for item in activePocket.items {
+            if let price = Float(item.price) {
+                total += price
+            }
+        }
         
+        totalAmount = total
     }
     
     // Get Active Pocket
@@ -52,6 +60,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
             
             self.activePocket = pocket
             self.createPocketBtn()
+            self.calculateTotal()
             
             self.itemTableView.reloadData()
         }
@@ -85,7 +94,9 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         header.pocketBtn.setTitle("Home", for: .normal)
         header.firstUserNameLabel.text = "Andre"
         header.secondUserNameLabel.text = "Jerome"
-        header.totalLabel.text = "$1.980"
+        
+//        header.totalLabel.sizeToFit()
+        header.totalLabel.text = String(format: "%.2f", totalAmount)
         
         return header
     }
