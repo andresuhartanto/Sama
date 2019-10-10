@@ -11,15 +11,12 @@ import Firebase
 import SwipeCellKit
 
 class MainScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
-
-    var testData = ["Water Bill", "Netflix", "Groceries", "Internet", "Maintenace", "Cleaning Lady", "Cat food"]
     
     @IBOutlet weak var itemTableView: UITableView!
     var userUID: String = ""
     var activePocket : Pocket = Pocket()
     var items : [Item] = [Item]()
     var pocketName: String = "Create Pocket \u{2193}"
-    var indicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +36,11 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         itemTableView.register(nib, forHeaderFooterViewReuseIdentifier: "CustomHeader")
         
         loadActivePocket()
-        loadItems()
         
     }
     
-    private func loadItems() {
+    private func calculateTotal() {
         
-//        let itemDB = Database.database().reference()
     }
     
     // Get Active Pocket
