@@ -94,9 +94,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         header.pocketBtn.setTitle("Home", for: .normal)
         header.firstUserNameLabel.text = "Andre"
         header.secondUserNameLabel.text = "Jerome"
-        
-//        header.totalLabel.sizeToFit()
-        header.totalLabel.text = String(format: "%.2f", totalAmount)
+        header.totalLabel.text = "$ \(String(format: "%.2f", totalAmount))"
         
         return header
     }
