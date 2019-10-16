@@ -388,6 +388,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="username_icon" translatesAutoresizingMaskIntoConstraints="NO" id="HQb-aY-iUo">
+                                <rect key="frame" x="157" y="70" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="eqb-Sd-ndS"/>
+                                    <constraint firstAttribute="width" constant="100" id="jZP-QK-FiN"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1LW-hp-euW">
+                                <rect key="frame" x="186" y="178" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9H1-Fk-UuF">
                                 <rect key="frame" x="179.5" y="406" width="55" height="30"/>
                                 <state key="normal" title="Log Out"/>
@@ -398,12 +411,20 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="9H1-Fk-UuF" firstAttribute="centerY" secondItem="kfg-ea-VaA" secondAttribute="centerY" id="X3f-Vp-Yia"/>
-                            <constraint firstItem="9H1-Fk-UuF" firstAttribute="centerX" secondItem="kfg-ea-VaA" secondAttribute="centerX" id="hhl-to-Wbf"/>
+                            <constraint firstItem="HQb-aY-iUo" firstAttribute="centerX" secondItem="kfg-ea-VaA" secondAttribute="centerX" id="7mJ-3n-7DQ"/>
+                            <constraint firstItem="1LW-hp-euW" firstAttribute="centerX" secondItem="kfg-ea-VaA" secondAttribute="centerX" id="S3p-pn-nc8"/>
+                            <constraint firstItem="9H1-Fk-UuF" firstAttribute="centerY" secondItem="kfg-ea-VaA" secondAttribute="centerY" id="TOp-Bc-t02"/>
+                            <constraint firstItem="9H1-Fk-UuF" firstAttribute="centerX" secondItem="kfg-ea-VaA" secondAttribute="centerX" id="ZzB-kX-GTY"/>
+                            <constraint firstItem="1LW-hp-euW" firstAttribute="top" secondItem="HQb-aY-iUo" secondAttribute="bottom" constant="8" id="eyp-ep-UNL"/>
+                            <constraint firstItem="HQb-aY-iUo" firstAttribute="top" secondItem="kQE-Jf-vb3" secondAttribute="top" constant="70" id="fsn-PV-pJT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kQE-Jf-vb3"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="User" id="OrA-CW-Q3T"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="1LW-hp-euW" id="8Tg-k7-7B3"/>
+                        <outlet property="profileImageView" destination="HQb-aY-iUo" id="sRP-Ii-vsT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGn-83-g2R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -414,7 +435,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8vp-yz-3L1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="Main" id="lNn-iX-fB6">
-                        <color key="badgeColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="badgeColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="KeC-dU-3uB">
@@ -456,6 +477,7 @@
         <image name="Logo" width="667" height="667"/>
         <image name="Main" width="30" height="30"/>
         <image name="User" width="30" height="30"/>
+        <image name="username_icon" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1a0-zp-RR2"/>
