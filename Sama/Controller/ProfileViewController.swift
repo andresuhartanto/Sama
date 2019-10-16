@@ -24,6 +24,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         imagePicker.delegate = self
         userUID = getuserID()
         
+        setUserInfo()
         prepareProfileImageView()
     }
     
@@ -40,8 +41,17 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         UIApplication.shared.keyWindow?.rootViewController = initial
     }
     
-    private func getUserData() {
-        
+    private func setUserInfo() {
+        let userRef = Database.database().reference().child("Users").child(userUID)
+        userRef.observe(.value) { (snapshot) in
+            let snapshotValue = snapshot.value as! Dictionary<String, Any>
+            
+            let name = snapshotValue["name"] as! String
+            self.nameLabel.text = name
+            
+            let profilePicture = snapshotValue["profilePicture"] as! Dictionary<String, String>
+            let imageURL = profilePicture["url"] as! String
+        }
     }
     
     private func prepareProfileImageView() {
@@ -87,8 +97,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                     fatalError("Error getting image URL!")
                 }
                 
+                let userRef = Database.database().reference().child("Users").child(self.userUID).child("profilePicture")
                 
-                print(imageURL)
+                let imageData = ["url" : imageURL.absoluteString]
+                
+                userRef.setValue(imageData)
+                
             }
         }
         
