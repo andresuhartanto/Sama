@@ -65,7 +65,32 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     private func uploadImage(_ image: UIImage) {
+        guard let data = image.jpegData(compressionQuality: 0.5) else {
+            fatalError("error getting image from profileImageView")
+        }
+        let imageName = userUID
         
+        let imageRef = Storage.storage().reference().child("profile-picture").child(imageName + ".jpeg")
+        
+        imageRef.putData(data, metadata: nil) { (metadata, error) in
+            if let error = error {
+                print("Error uploading profile image! \(error)")
+                return
+            }
+            
+            imageRef.downloadURL { (url, err) in
+                if let err = err {
+                    fatalError("Error getting profile image URL! \(err)")
+                }
+                
+                guard let imageURL = url else {
+                    fatalError("Error getting image URL!")
+                }
+                
+                
+                print(imageURL)
+            }
+        }
         
     }
     
