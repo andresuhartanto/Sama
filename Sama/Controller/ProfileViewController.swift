@@ -9,16 +9,21 @@
 import UIKit
 import Firebase
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var profileImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     
+    let imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        imagePicker.delegate = self
+        
+        prepareProfileImageView()
     }
+    
     @IBAction func logoutBtnPressed(_ sender: UIButton) {
         do {
             try Auth.auth().signOut()
@@ -30,6 +35,42 @@ class ProfileViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initial = storyboard.instantiateInitialViewController()
         UIApplication.shared.keyWindow?.rootViewController = initial
+    }
+    
+    private func getUserData() {
+        
+    }
+    
+    private func prepareProfileImageView() {
+        profileImageView.layer.borderWidth = 4
+        profileImageView.layer.borderColor = UIColor(red: 95/255, green: 147/255, blue: 244/255, alpha: 1).cgColor
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+        profileImageView.clipsToBounds = true
+        addTapGesture(profileImageView)
+    }
+    
+    private func addTapGesture(_ imageView : UIImageView) {
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
+    }
+    
+    @objc func imageTapped() {
+        print("Image tapped!")
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate Methods
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            profileImageView.contentMode = .scaleAspectFit
+            profileImageView.image = pickedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
 }
