@@ -8,8 +8,7 @@
 
 import UIKit
 import Firebase
-import Kingfisher
-import SDWebImage
+import Kingfisher                               
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
