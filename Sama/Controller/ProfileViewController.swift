@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -50,7 +51,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.nameLabel.text = name
             
             let profilePicture = snapshotValue["profilePicture"] as! Dictionary<String, String>
-            let imageURL = profilePicture["url"] as! String
+            guard let imageURL = profilePicture["url"] else {
+                fatalError("Could not get profile image URL!")
+            }
+            
+            self.profileImageView.kf.setImage(with: URL(string: imageURL), placeholder: UIImage(named: "username_icon"))
         }
     }
     

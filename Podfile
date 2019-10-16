@@ -1,4 +1,4 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'Sama' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -12,7 +12,7 @@ target 'Sama' do
   pod 'Firebase/Storage'
 	pod 'SVProgressHUD'
   pod 'SwipeCellKit'
-  pod 'Kingfisher'
+  pod 'Kingfisher', '~> 5.0'
   #pod 'Floaty'
 	#pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 
