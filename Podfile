@@ -13,6 +13,7 @@ target 'Sama' do
 	pod 'SVProgressHUD'
   pod 'SwipeCellKit'
   pod 'Kingfisher', '~> 5.0'
+  #pod 'SDWebImage', '~> 5.0'
   #pod 'Floaty'
 	#pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 
