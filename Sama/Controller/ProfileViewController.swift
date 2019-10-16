@@ -14,12 +14,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet var profileImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     
+    var userUID: String = ""
+    
     let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         imagePicker.delegate = self
+        userUID = getuserID()
         
         prepareProfileImageView()
     }
@@ -61,12 +64,19 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         present(imagePicker, animated: true, completion: nil)
     }
     
+    private func uploadImage(_ image: UIImage) {
+        
+        
+    }
+    
     // MARK: - UIImagePickerControllerDelegate Methods
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             profileImageView.contentMode = .scaleToFill
             profileImageView.image = pickedImage
+            
+            uploadImage(pickedImage)
         }
         
         dismiss(animated: true, completion: nil)

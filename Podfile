@@ -9,6 +9,7 @@ target 'Sama' do
 	pod 'Firebase'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 	pod 'SVProgressHUD'
   pod 'SwipeCellKit'
   #pod 'Floaty'
