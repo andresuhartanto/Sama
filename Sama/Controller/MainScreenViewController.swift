@@ -29,6 +29,9 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         // Get userUID
         userUID = getuserID()
         
+        // Get User profile im
+        
+        
         // Register CustomItemCell.xib
         itemTableView.register(UINib(nibName: "CustomItemCell", bundle: nil), forCellReuseIdentifier: "customItemCell")
         

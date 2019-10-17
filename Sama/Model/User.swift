@@ -12,6 +12,7 @@ class User {
     var id : String = ""
     var name : String = ""
     var email : String = ""
+    var profileImageURL : String = ""
     var pockets : [Pocket] = [Pocket]()
     var activePocket : Pocket = Pocket()
 }
