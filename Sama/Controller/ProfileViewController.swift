@@ -25,21 +25,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
         imagePicker.delegate = self
         userUID = getuserID()
-        cacheKey = "profile-\(userUID)"
-        
-        let cache = ImageCache.default
-        let cached = cache.isCached(forKey: cacheKey)
-        
-        if cached {
-            cache.retrieveImage(forKey: cacheKey) { result in
-                switch result {
-                case .success(let value):
-                    self.setProfileImage(value.image!)
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
         
         setUserInfo()
         prepareProfileImageView()
@@ -66,30 +51,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             let name = snapshotValue["name"] as! String
             self.nameLabel.text = name
             
-//            let profilePicture = snapshotValue["profilePicture"] as! Dictionary<String, String>
-//            guard let imageURL = profilePicture["url"] else {
-//                fatalError("Could not get profile image URL!")
-//            }
-//            self.profileImageView.sd_setImage(with: URL(string: imageURL))
-            
-            let cache = ImageCache.default
-            let cached = cache.isCached(forKey: self.cacheKey)
-            
-            if !cached {
-                let profilePicture = snapshotValue["profilePicture"] as! Dictionary<String, String>
-                guard let imageURL = profilePicture["url"] else {
-                    fatalError("Could not get profile image URL!")
-                }
-                let resource = ImageResource(downloadURL: URL(string: imageURL)!, cacheKey: self.cacheKey)
-                
-                self.profileImageView.kf.setImage(with: resource)
+            let profilePicture = snapshotValue["profilePicture"] as! Dictionary<String, String>
+            guard let imageURL = profilePicture["url"] else {
+                fatalError("Could not get profile image URL!")
             }
+            let resource = ImageResource(downloadURL: URL(string: imageURL)!)
             
+            self.profileImageView.contentMode = .scaleAspectFill
+            self.profileImageView.kf.setImage(with: resource)
         }
-    }
-    
-    private func setProfileImage(_ image : UIImage) {
-        profileImageView.image = image
     }
     
     private func prepareProfileImageView() {
@@ -150,9 +120,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            profileImageView.contentMode = .scaleToFill
-            profileImageView.image = pickedImage
-            
             uploadImage(pickedImage)
         }
         
