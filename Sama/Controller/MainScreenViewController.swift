@@ -10,11 +10,13 @@ import UIKit
 import Firebase
 import SwipeCellKit
 
+protocol CustomHeaderDelegate {
+    func contibutorsList(data: String)
+}
+
 class MainScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var itemTableView: UITableView!
-    var userUID: String = ""
-    var activePocket : Pocket = Pocket()
     var items : [Item] = [Item]()
     var pocketName: String = "Create Pocket \u{2193}"
     var totalAmount : Float = 0
@@ -26,11 +28,8 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         itemTableView.delegate = self
         itemTableView.dataSource = self
         
-        // Get userUID
-        userUID = getuserID()
-        
-        // Get User profile im
-        
+        // Get and set userUID
+        Data.userUID = getuserID()
         
         // Register CustomItemCell.xib
         itemTableView.register(UINib(nibName: "CustomItemCell", bundle: nil), forCellReuseIdentifier: "customItemCell")
@@ -40,12 +39,12 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         itemTableView.register(nib, forHeaderFooterViewReuseIdentifier: "CustomHeader")
         
         loadActivePocket()
-        
     }
+    
     
     private func calculateTotal() {
         var total : Float = 0
-        for item in activePocket.items {
+        for item in Data.activePocket.items {
             if let price = Float(item.price) {
                 total += price
             }
@@ -61,7 +60,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
                 self.pocketName = pocket.name
             }
             
-            self.activePocket = pocket
+            Data.activePocket = pocket
             self.createPocketBtn()
             self.calculateTotal()
             
@@ -87,7 +86,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToAddNewPocket" {
             let destinationVC = segue.destination as! AddNewPocketViewController
-            destinationVC.userUID = userUID
+            destinationVC.userUID = Data.userUID
         }
     }
     
@@ -95,8 +94,6 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeader") as! CustomHeader
         header.pocketBtn.setTitle("Home", for: .normal)
-        header.firstUserNameLabel.text = "Andre"
-        header.secondUserNameLabel.text = "Jerome"
         header.totalLabel.text = "$ \(String(format: "%.2f", totalAmount))"
         
         return header
@@ -112,8 +109,8 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         
         cell.delegate = self
         
-        cell.itemNameTextLabel.text = activePocket.items[indexPath.row].name
-        cell.priceTextLabel.text = activePocket.items[indexPath.row].price
+        cell.itemNameTextLabel.text = Data.activePocket.items[indexPath.row].name
+        cell.priceTextLabel.text = Data.activePocket.items[indexPath.row].price
         cell.profileImageView.image = UIImage(named: "username_icon")
         
         cell.selectionStyle = .none
@@ -122,7 +119,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activePocket.items.count
+        return Data.activePocket.items.count
     }
     
     // Add button funtions
@@ -157,7 +154,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
                         fatalError("Could not convert price to Float")
                     }
                     
-                    let data = ["name": "\(newItemName)", "price" : String(format: "%.2f", price), "owner": [self.userUID : true]] as [String : Any]
+                    let data = ["name": "\(newItemName)", "price" : String(format: "%.2f", price), "owner": [Data.userUID : true]] as [String : Any]
                     
                     itemsDB.setValue(data) { (error, ref) in
                         if error != nil {
@@ -165,7 +162,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
                         }
                         
                         // Update pocket Data in Firebase with new item
-                        let pocketDB = Database.database().reference().child("Pockets").child(self.activePocket.pocketID).child("items")
+                        let pocketDB = Database.database().reference().child("Pockets").child(Data.activePocket.pocketID).child("items")
                         let itemData = [itemsDB.key : true]
                         pocketDB.updateChildValues(itemData)
                         
@@ -229,14 +226,14 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     private func deleteItem(_ indexPath : IndexPath) {
-        let itemID = self.activePocket.items[indexPath.row].id
+        let itemID = Data.activePocket.items[indexPath.row].id
         let ref = Database.database().reference()
         // Removing from Items DB
         ref.child("Items").child(itemID).removeValue()
         // Removing item ref from pocket
-        ref.child("Pockets").child(self.activePocket.pocketID).child("items").child(itemID).removeValue()
+        ref.child("Pockets").child(Data.activePocket.pocketID).child("items").child(itemID).removeValue()
         // removing from Array
-        self.activePocket.items.remove(at: indexPath.row)
+        Data.activePocket.items.remove(at: indexPath.row)
         
         self.itemTableView.reloadData()
     }

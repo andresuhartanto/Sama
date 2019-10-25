@@ -27,6 +27,9 @@
 		656BCB00233E615700E74196 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BCAFF233E615700E74196 /* User.swift */; };
 		656BCB02234C32C400E74196 /* GetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BCB01234C32C400E74196 /* GetData.swift */; };
 		656BCB04234C331600E74196 /* GetUserID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BCB03234C331600E74196 /* GetUserID.swift */; };
+		65E66198235F228E0065AAFC /* ContributorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E66196235F228E0065AAFC /* ContributorCollectionViewCell.swift */; };
+		65E66199235F228E0065AAFC /* ContributorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65E66197235F228E0065AAFC /* ContributorCollectionViewCell.xib */; };
+		65E661BD2362E8250065AAFC /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E661BC2362E8250065AAFC /* Data.swift */; };
 		65FA10212338DBAF007EA4C3 /* CustomItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FA101F2338DBAF007EA4C3 /* CustomItemCell.swift */; };
 		65FA10222338DBAF007EA4C3 /* CustomItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FA10202338DBAF007EA4C3 /* CustomItemCell.xib */; };
 		65FA1026233A02E3007EA4C3 /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FA1025233A02E3007EA4C3 /* CustomHeader.swift */; };
@@ -56,6 +59,9 @@
 		656BCAFF233E615700E74196 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		656BCB01234C32C400E74196 /* GetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetData.swift; sourceTree = "<group>"; };
 		656BCB03234C331600E74196 /* GetUserID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserID.swift; sourceTree = "<group>"; };
+		65E66196235F228E0065AAFC /* ContributorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorCollectionViewCell.swift; sourceTree = "<group>"; };
+		65E66197235F228E0065AAFC /* ContributorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContributorCollectionViewCell.xib; sourceTree = "<group>"; };
+		65E661BC2362E8250065AAFC /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		65FA101F2338DBAF007EA4C3 /* CustomItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomItemCell.swift; sourceTree = "<group>"; };
 		65FA10202338DBAF007EA4C3 /* CustomItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomItemCell.xib; sourceTree = "<group>"; };
 		65FA1025233A02E3007EA4C3 /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
@@ -99,6 +105,7 @@
 		651261E723338BF8007AF227 /* Sama */ = {
 			isa = PBXGroup;
 			children = (
+				65E661BE2362ECE40065AAFC /* Module */,
 				6512620023348FFA007AF227 /* Model */,
 				651262012334900F007AF227 /* View */,
 				6512620223349022007AF227 /* Controller */,
@@ -164,6 +171,14 @@
 			path = "Pocket Button";
 			sourceTree = "<group>";
 		};
+		65E661BE2362ECE40065AAFC /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				65E661BC2362E8250065AAFC /* Data.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
 		65FA10242338DBE2007EA4C3 /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +186,8 @@
 				65FA10202338DBAF007EA4C3 /* CustomItemCell.xib */,
 				656BCAFB233E5EAF00E74196 /* CustomPocketCell.swift */,
 				656BCAFC233E5EAF00E74196 /* CustomPocketCell.xib */,
+				65E66196235F228E0065AAFC /* ContributorCollectionViewCell.swift */,
+				65E66197235F228E0065AAFC /* ContributorCollectionViewCell.xib */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -261,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65E66199235F228E0065AAFC /* ContributorCollectionViewCell.xib in Resources */,
 				651261F523338BFA007AF227 /* LaunchScreen.storyboard in Resources */,
 				651261F223338BFA007AF227 /* Assets.xcassets in Resources */,
 				65FA10222338DBAF007EA4C3 /* CustomItemCell.xib in Resources */,
@@ -324,6 +342,7 @@
 				656BCAF4233E5D2B00E74196 /* Pocket.swift in Sources */,
 				656BCB02234C32C400E74196 /* GetData.swift in Sources */,
 				65FA1026233A02E3007EA4C3 /* CustomHeader.swift in Sources */,
+				65E66198235F228E0065AAFC /* ContributorCollectionViewCell.swift in Sources */,
 				656BCAED233E382600E74196 /* PocketButton.swift in Sources */,
 				656BCAF8233E5DA600E74196 /* Contributor.swift in Sources */,
 				656BCAF6233E5D8500E74196 /* Item.swift in Sources */,
@@ -335,6 +354,7 @@
 				651261E923338BF8007AF227 /* AppDelegate.swift in Sources */,
 				656BCAF2233E5C7500E74196 /* AddNewPocketViewController.swift in Sources */,
 				651261EB23338BF8007AF227 /* SceneDelegate.swift in Sources */,
+				65E661BD2362E8250065AAFC /* Data.swift in Sources */,
 				65FA102B233B494B007EA4C3 /* ProfileViewController.swift in Sources */,
 				651262042334932F007AF227 /* RegisterViewController.swift in Sources */,
 			);

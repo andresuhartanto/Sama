@@ -9,12 +9,38 @@
 import UIKit
 import Firebase
 
-class CustomHeader: UITableViewHeaderFooterView {
+class CustomHeader: UITableViewHeaderFooterView, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var pocketBtn: UIButton!
     @IBOutlet weak var totalLabel: UILabel!
-    @IBOutlet weak var firstUserNameLabel: UILabel!
-    @IBOutlet weak var secondUserNameLabel: UILabel!
+    @IBOutlet var contributorsCollectionView: UICollectionView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        // Initialization code
+        contributorsCollectionView.delegate = self
+        contributorsCollectionView.dataSource = self
+        
+        // Register xib
+        contributorsCollectionView.register(UINib(nibName: "ContributorCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "customContributorCell")
+    }
+    
+    // Contributor CollectionView
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let contributorCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customContributorCell", for: indexPath) as! ContributorCollectionViewCell
+        
+        return contributorCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
+    }
+    
     
     @IBAction func pocketBtnPressed(_ sender: UIButton) {
         
