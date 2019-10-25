@@ -11,4 +11,5 @@ import Foundation
 struct Data {
     static var userUID : String = ""
     static var activePocket : Pocket = Pocket()
+    static var contributors : [Contributor] = [Contributor]()
 }

@@ -9,11 +9,9 @@
 import Foundation
 import Firebase
 
-var userUID = getuserID()
-
 func getActivePocket(completion: @escaping (Pocket) -> Void) {
     let ref = Database.database().reference()
-    ref.child("Users").child(userUID).child("activePocket").observe(.childAdded) { (snapshot) in
+    ref.child("Users").child(Data.userUID).child("activePocket").observe(.childAdded) { (snapshot) in
         let pocketRef = ref.child("Pockets").child(snapshot.key)
         pocketRef.observe(.value) { (pocketSnapshot) in
             let snapshotValue = pocketSnapshot.value as! Dictionary<String, Any>
@@ -22,6 +20,8 @@ func getActivePocket(completion: @escaping (Pocket) -> Void) {
             let pocketID = pocketSnapshot.key
             let pocketName = snapshotValue["name"]
             let pocketContributors = snapshotValue["contributors"] as! Dictionary<String, Any>
+            
+           loadContributors(ref, pocketContributors)
             
             pocket.pocketID = pocketID
             pocket.name = pocketName as! String
@@ -38,6 +38,29 @@ func getActivePocket(completion: @escaping (Pocket) -> Void) {
             completion(pocket)
         }
     }
+}
+
+func loadContributors(_ ref : DatabaseReference, _ pocketContributors : [String : Any]) {
+    var contributors : [Contributor] = [Contributor]()
+    let contributor = Contributor()
+    
+    for (userUID, rate) in pocketContributors {
+        ref.child("Users").child(userUID).observeSingleEvent(of: .value) { (snapshot) in
+            let snapshotValue = snapshot.value as! Dictionary<String, Any>
+            
+            contributor.name = snapshotValue["name"] as! String
+            contributor.userUID = userUID
+//            contributor.profileImageURL = snapshotValue["profile"]
+            contributor.rate = rate as! Int
+            
+            contributors.append(contributor)
+            
+            Data.contributors = contributors
+        }
+    }
+    
+    print(contributors)
+    
 }
 
 func loadData(_ items : [String : Bool], _ ref : DatabaseReference, completion: @escaping ([Item]) -> Void) {

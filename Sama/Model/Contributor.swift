@@ -10,6 +10,8 @@ import Foundation
 
 class Contributor {
     var id : String = ""
-    var userId : String = ""
+    var userUID : String = ""
+    var name : String = ""
+    var profileImageURL : String = ""
     var rate : Int = 0
 }
