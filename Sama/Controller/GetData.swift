@@ -45,22 +45,19 @@ func loadContributors(_ ref : DatabaseReference, _ pocketContributors : [String 
     let contributor = Contributor()
     
     for (userUID, rate) in pocketContributors {
-        ref.child("Users").child(userUID).observeSingleEvent(of: .value) { (snapshot) in
-            let snapshotValue = snapshot.value as! Dictionary<String, Any>
-            
-            contributor.name = snapshotValue["name"] as! String
-            contributor.userUID = userUID
-//            contributor.profileImageURL = snapshotValue["profile"]
-            contributor.rate = rate as! Int
-            
-            contributors.append(contributor)
-            
-            Data.contributors = contributors
+            ref.child("Users").child(userUID).observeSingleEvent(of: .value) { (snapshot) in
+                let snapshotValue = snapshot.value as! Dictionary<String, Any>
+                
+                contributor.name = snapshotValue["name"] as! String
+                contributor.userUID = userUID
+    //            contributor.profileImageURL = snapshotValue["profile"]
+                contributor.rate = rate as! Int
+                
+                contributors.append(contributor)
+                
+                Data.contributors = contributors
+            }
         }
-    }
-    
-    print(contributors)
-    
 }
 
 func loadData(_ items : [String : Bool], _ ref : DatabaseReference, completion: @escaping ([Item]) -> Void) {

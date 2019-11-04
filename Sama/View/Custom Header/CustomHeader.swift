@@ -14,6 +14,7 @@ class CustomHeader: UITableViewHeaderFooterView, UICollectionViewDataSource, UIC
     @IBOutlet weak var pocketBtn: UIButton!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet var contributorsCollectionView: UICollectionView!
+    var activePocket : Pocket = Pocket()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +25,15 @@ class CustomHeader: UITableViewHeaderFooterView, UICollectionViewDataSource, UIC
         
         // Register xib
         contributorsCollectionView.register(UINib(nibName: "ContributorCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "customContributorCell")
+        
+        setActivePocket()
+    }
+    
+    private func setActivePocket() {
+        getActivePocket { (pocket) in
+            self.activePocket = pocket
+            self.contributorsCollectionView.reloadData()
+        }
     }
     
     // Contributor CollectionView

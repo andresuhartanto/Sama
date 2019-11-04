@@ -51,14 +51,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             let name = snapshotValue["name"] as! String
             self.nameLabel.text = name
             
-            let profilePicture = snapshotValue["profilePicture"] as! Dictionary<String, String>
-            guard let imageURL = profilePicture["url"] else {
-                fatalError("Could not get profile image URL!")
+            if let profilePicture = snapshotValue["profilePicture"] as? Dictionary<String, String> {
+                guard let imageURL = profilePicture["url"] else {
+                    fatalError("Could not get profile image URL!")
+                }
+                let resource = ImageResource(downloadURL: URL(string: imageURL)!)
+                
+                self.profileImageView.contentMode = .scaleAspectFill
+                self.profileImageView.kf.setImage(with: resource)
             }
-            let resource = ImageResource(downloadURL: URL(string: imageURL)!)
-            
-            self.profileImageView.contentMode = .scaleAspectFill
-            self.profileImageView.kf.setImage(with: resource)
         }
     }
     

@@ -10,10 +10,6 @@ import UIKit
 import Firebase
 import SwipeCellKit
 
-protocol CustomHeaderDelegate {
-    func contibutorsList(data: String)
-}
-
 class MainScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var itemTableView: UITableView!
