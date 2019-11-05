@@ -21,7 +21,7 @@ func getActivePocket(completion: @escaping (Pocket) -> Void) {
             let pocketName = snapshotValue["name"]
             let pocketContributors = snapshotValue["contributors"] as! Dictionary<String, Any>
             
-//           loadContributors(ref, pocketContributors)
+           loadContributors(ref, pocketContributors)
             
             pocket.pocketID = pocketID
             pocket.name = pocketName as! String
@@ -50,7 +50,11 @@ func loadContributors(_ ref : DatabaseReference, _ pocketContributors : [String 
                 
                 contributor.name = snapshotValue["name"] as! String
                 contributor.userUID = userUID
-    //            contributor.profileImageURL = snapshotValue["profile"]
+                
+                if let profileImageURL = snapshotValue["profilePicture"] as? Dictionary<String, String> {
+                    contributor.profileImageURL = profileImageURL["url"]!
+                }
+                
                 contributor.rate = rate as! Int
                 
                 contributors.append(contributor)
