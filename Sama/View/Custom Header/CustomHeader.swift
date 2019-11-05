@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 class CustomHeader: UITableViewHeaderFooterView, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -44,11 +45,21 @@ class CustomHeader: UITableViewHeaderFooterView, UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let contributorCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customContributorCell", for: indexPath) as! ContributorCollectionViewCell
         
+        if Data.contributors[indexPath.row].profileImageURL != "" {
+            let resource = ImageResource(downloadURL: URL(string: Data.contributors[indexPath.row].profileImageURL)!)
+            contributorCell.contributorImageView.layer.borderWidth = 2
+            contributorCell.contributorImageView.layer.borderColor = UIColor(red: 95/255, green: 147/255, blue: 244/255, alpha: 1).cgColor
+            contributorCell.contributorImageView.layer.cornerRadius = contributorCell.contributorImageView.frame.height / 2
+            contributorCell.contributorImageView.clipsToBounds = true
+            contributorCell.contributorImageView.contentMode = .scaleAspectFill
+            contributorCell.contributorImageView.kf.setImage(with: resource)
+        }
+        
         return contributorCell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return Data.contributors.count
     }
     
     

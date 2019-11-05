@@ -45,7 +45,7 @@ func loadContributors(_ ref : DatabaseReference, _ pocketContributors : [String 
     let contributor = Contributor()
     
     for (userUID, rate) in pocketContributors {
-            ref.child("Users").child(userUID).observeSingleEvent(of: .value) { (snapshot) in
+            ref.child("Users").child(userUID).observe(.value) { (snapshot) in
                 let snapshotValue = snapshot.value as! Dictionary<String, Any>
                 
                 contributor.name = snapshotValue["name"] as! String
