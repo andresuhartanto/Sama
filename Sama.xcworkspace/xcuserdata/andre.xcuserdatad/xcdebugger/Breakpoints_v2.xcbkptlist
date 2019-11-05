@@ -3,4 +3,54 @@
    uuid = "4285A111-2186-43D9-8B0A-3823C7982536"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9614B94C-1D93-44DB-9FDA-D016F63663C4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sama/Controller/GetData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "loadContributors(_:_:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "9614B94C-1D93-44DB-9FDA-D016F63663C4 - 2878567b7a68da3e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sama.loadContributors(__C.FIRDatabaseReference, Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "Sama"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andre/Documents/Projects/Sama/Sama/Controller/GetData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "667">
+               </Location>
+               <Location
+                  uuid = "9614B94C-1D93-44DB-9FDA-D016F63663C4 - b3ded2bb79f9456b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in Sama.loadContributors(__C.FIRDatabaseReference, Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "Sama"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andre/Documents/Projects/Sama/Sama/Controller/GetData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "242">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

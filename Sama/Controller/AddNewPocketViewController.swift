@@ -126,7 +126,7 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
                 
                 // Rate is hard coded for now V1.0
                 let rate = 50
-                let data = ["name": "\(newPocketName)", "contributors": ["userUID": self.userUID, "rate" : rate]] as [String : Any]
+                let data = ["name": "\(newPocketName)", "contributors": [self.userUID : rate]] as [String : Any]
                 
                 pocketsDB.setValue(data) { (error, ref) in
                     if error != nil {
