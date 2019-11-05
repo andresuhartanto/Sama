@@ -21,7 +21,7 @@ func getActivePocket(completion: @escaping (Pocket) -> Void) {
             let pocketName = snapshotValue["name"]
             let pocketContributors = snapshotValue["contributors"] as! Dictionary<String, Any>
             
-           loadContributors(ref, pocketContributors)
+//           loadContributors(ref, pocketContributors)
             
             pocket.pocketID = pocketID
             pocket.name = pocketName as! String

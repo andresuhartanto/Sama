@@ -124,11 +124,30 @@ class AddNewPocketViewController: UIViewController, UITableViewDataSource, UITab
             if newPocketName != "" {
                 let pocketsDB = Database.database().reference().child("Pockets").childByAutoId()
                 
-                // Rate is hard coded for now V1.0
-                let rate = 50
-                let data = ["name": "\(newPocketName)", "contributors": ["userUID": self.userUID, "rate" : rate]] as [String : Any]
+                if let newPocketID = pocketsDB.key {
+                    let pocketRef = Database.database().reference().child("Pockets").child(newPocketID).child("contributors").childByAutoId()
+                    let userRef = Database.database().reference().child("Users").child(Data.userUID)
+                    userRef.observe(.value) { (snapshot) in
+                        let snapshotValue = snapshot.value as! Dictionary<String, Any>
+                        
+                        // Rate is hard coded for now V1.0
+                        let rate = 50
+                        var profileImageUrl = ""
+                        
+                        if let profilePicture = snapshotValue["profilePicture"] as? Dictionary<String, String> {
+                            profileImageUrl = profilePicture["url"]!
+                        }
+                        
+                        let name = snapshotValue["name"] as! String
+                        let contributorData = ["userUID": Data.userUID, "name": name, "rate": rate, "profileImageUrl": profileImageUrl] as [String : Any]
+                        
+                        pocketRef.updateChildValues(contributorData)
+                    }
+                }
                 
-                pocketsDB.setValue(data) { (error, ref) in
+                let data = ["name": "\(newPocketName)"] as [String : Any]
+                
+                pocketsDB.updateChildValues(data) { (error, ref) in
                     if error != nil {
                         print(error!)
                     }
