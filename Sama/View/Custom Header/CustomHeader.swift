@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import Kingfisher
 
-class CustomHeader: UITableViewHeaderFooterView, UICollectionViewDataSource, UICollectionViewDelegate {
+class CustomHeader: UITableViewHeaderFooterView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var pocketBtn: UIButton!
     @IBOutlet weak var totalLabel: UILabel!
@@ -60,6 +60,18 @@ class CustomHeader: UITableViewHeaderFooterView, UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Data.contributors.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+
+        let totalCellWidth = 50 * collectionView.numberOfItems(inSection: 0)
+        let totalSpacingWidth = 10 * (collectionView.numberOfItems(inSection: 0) - 1)
+
+        let leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
+        let rightInset = leftInset
+
+        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
+
     }
     
     
